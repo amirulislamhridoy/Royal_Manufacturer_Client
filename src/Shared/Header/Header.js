@@ -1,5 +1,5 @@
-import React from "react";
-import { Link, Navigate, NavLink } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, NavLink } from "react-router-dom";
 import icon from "../../icons/logo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
@@ -8,10 +8,20 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { signOut } from "firebase/auth";
 
 const Header = () => {
+  const [bgColor, setBgColor] = useState(false)
   const [user, loading, error] = useAuthState(auth);
   const logOut = () => {
     signOut(auth);
   }
+  const changeBackground = () => {
+    if(window.scrollY > 100){
+      setBgColor(true)
+    }else{
+      setBgColor(false)
+    }
+  }
+  window.addEventListener('scroll', changeBackground);
+
   const btn = (
     <>
       <li>
@@ -26,8 +36,9 @@ const Header = () => {
       </li>
     </>
   );
+
   return (
-    <nav className={`navbar sticky top-0 z-10`}>
+    <nav className={`navbar sticky top-0 z-10 ${bgColor && 'bg-secondary'}`}>
       <div className="navbar-start">
         <Link to="/" className="btn btn-ghost">
           <img className="w-10" src={icon} alt="" />
