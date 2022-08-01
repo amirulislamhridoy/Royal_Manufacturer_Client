@@ -1,16 +1,21 @@
-import React from 'react';
+import React from "react";
 import SocialLogin from "./SocialLogin";
 import { useForm } from "react-hook-form";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 const Register = () => {
-    const { register, formState: { errors }, handleSubmit } = useForm();
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm();
 
   const onSubmit = (data) => console.log(data);
-    return (
-        <section className="flex justify-center flex-col items-center min-h-screen">
+  return (
+    <section className="flex justify-center flex-col items-center min-h-screen">
       <div className="card w-96 bg-base-100 shadow-xl">
         <form className="card-body" onSubmit={handleSubmit(onSubmit)}>
+          <h1 className="text-center text-2xl font-bold">Sign Up</h1>
           <div className="form-control">
             <label className="label" htmlFor="name">
               <span className="label-text">Your Name</span>
@@ -20,9 +25,11 @@ const Register = () => {
               placeholder="Your Name"
               id="name"
               className="input input-bordered"
-              {...register('name', {required: true})}
+              {...register("name", { required: true })}
             />
-            <label className=' text-error'>{errors.name?.type === 'required' && "Name is required"}</label>
+            <label className=" text-error">
+              {errors.name?.type === "required" && "Name is required"}
+            </label>
           </div>
           <div className="form-control">
             <label className="label" htmlFor="email">
@@ -30,7 +37,7 @@ const Register = () => {
             </label>
             <input
               placeholder="jon@gmail.com"
-              id='email'
+              id="email"
               className="input input-bordered"
               {...register("email", {
                 required: {
@@ -58,33 +65,33 @@ const Register = () => {
               id="password"
               className="input input-bordered"
               {...register("password", {
-                required: {value: true, message: 'Password is required.'},
+                required: { value: true, message: "Password is required." },
                 minLength: {
                   value: 6,
-                  message: 'You password must be 6 length.'
-                }
+                  message: "You password must be 6 length.",
+                },
               })}
             />
-            
-            <label class="label">
-              <Link to="/login" class="label-text-alt link link-hover">
-                You have an account? Login
-              </Link>
-            </label>
-            <label className=' text-error'>
-              {errors.password?.type === 'required' && errors.password.message}
+            <label className=" text-error">
+              {errors.password?.type === "required" && errors.password.message}
               {errors.password?.type === "minLength" && errors.password.message}
             </label>
           </div>
+
+          <label class="label">
+            <Link to="/login" class="label-text-alt link link-hover">
+              You have an account? Login
+            </Link>
+          </label>
           <div className="form-control mt-6">
-            <button className="btn btn-primary rounded-3xl">Login</button>
+            <button className="btn btn-primary rounded-3xl">Sign Up</button>
           </div>
         </form>
       </div>
 
       <SocialLogin />
     </section>
-    );
+  );
 };
 
 export default Register;

@@ -16,21 +16,7 @@ const Login = () => {
     <section className="flex justify-center flex-col items-center min-h-screen">
       <div className="card w-96 bg-base-100 shadow-xl">
         <form className="card-body" onSubmit={handleSubmit(onSubmit)}>
-          <div className="form-control">
-            <label className="label" htmlFor="name">
-              <span className="label-text">Your Name</span>
-            </label>
-            <input
-              type="text"
-              placeholder="Your Name"
-              id="name"
-              className="input input-bordered"
-              {...register("name", { required: true })}
-            />
-            <label className="text-error">
-              {errors.name?.type === "required" && "Name is required"}
-            </label>
-          </div>
+          <h1 className='text-center text-2xl font-bold'>Login</h1>
           <div className="form-control">
             <label className="label" htmlFor="email">
               <span className="label-text">Email</span>
