@@ -1,12 +1,15 @@
 import React from "react";
 import SocialLogin from "./SocialLogin";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import auth from '../../firebase_init'
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { updateProfile } from "firebase/auth";
+import Loading from "../../Shared/Loading";
 
 const Register = () => {
+  const location = useLocation()
+  const navigate = useNavigate()
     const [createUserWithEmailAndPassword,user,loading,error,] = useCreateUserWithEmailAndPassword(auth, {sendEmailVerification: true});
     const {register,formState: { errors },handleSubmit,} = useForm();
 
@@ -14,6 +17,14 @@ const Register = () => {
     await createUserWithEmailAndPassword(data.email, data.password)
     await updateProfile({displayName: data.name})
   };
+
+  let from = location.state?.from?.pathname || "/";
+  if(loading){
+    return <Loading />
+  }
+  if(user){
+    navigate(from)
+  }
   
   return (
     <section className="flex justify-center flex-col items-center min-h-screen">
