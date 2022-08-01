@@ -1,6 +1,7 @@
 import React from 'react';
 import SocialLogin from "./SocialLogin";
 import { useForm } from "react-hook-form";
+import { Link } from 'react-router-dom';
 
 const Register = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
@@ -21,7 +22,7 @@ const Register = () => {
               className="input input-bordered"
               {...register('name', {required: true})}
             />
-            <label className='label text-error'>{errors.name?.type === 'required' && "Name is required"}</label>
+            <label className=' text-error'>{errors.name?.type === 'required' && "Name is required"}</label>
           </div>
           <div className="form-control">
             <label className="label" htmlFor="email">
@@ -42,7 +43,7 @@ const Register = () => {
                 },
               })}
             />
-            <label className="label text-error">
+            <label className=" text-error">
               {errors.email?.type === "required" && errors.email.message}
               {errors.email?.type === "pattern" && errors.email.message}
             </label>
@@ -64,7 +65,13 @@ const Register = () => {
                 }
               })}
             />
-            <label className='label text-error'>
+            
+            <label class="label">
+              <Link to="/login" class="label-text-alt link link-hover">
+                You have an account? Login
+              </Link>
+            </label>
+            <label className=' text-error'>
               {errors.password?.type === 'required' && errors.password.message}
               {errors.password?.type === "minLength" && errors.password.message}
             </label>

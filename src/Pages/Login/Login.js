@@ -1,9 +1,14 @@
 import React from "react";
 import SocialLogin from "./SocialLogin";
 import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 
 const Login = () => {
-    const { register, formState: { errors }, handleSubmit } = useForm();
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm();
 
   const onSubmit = (data) => console.log(data);
 
@@ -20,9 +25,11 @@ const Login = () => {
               placeholder="Your Name"
               id="name"
               className="input input-bordered"
-              {...register('name', {required: true})}
+              {...register("name", { required: true })}
             />
-            <label className='label text-error'>{errors.name?.type === 'required' && "Name is required"}</label>
+            <label className="text-error">
+              {errors.name?.type === "required" && "Name is required"}
+            </label>
           </div>
           <div className="form-control">
             <label className="label" htmlFor="email">
@@ -30,7 +37,7 @@ const Login = () => {
             </label>
             <input
               placeholder="jon@gmail.com"
-              id='email'
+              id="email"
               className="input input-bordered"
               {...register("email", {
                 required: {
@@ -43,7 +50,7 @@ const Login = () => {
                 },
               })}
             />
-            <label className="label text-error">
+            <label className=" text-error">
               {errors.email?.type === "required" && errors.email.message}
               {errors.email?.type === "pattern" && errors.email.message}
             </label>
@@ -58,15 +65,25 @@ const Login = () => {
               id="password"
               className="input input-bordered"
               {...register("password", {
-                required: {value: true, message: 'Password is required.'},
+                required: { value: true, message: "Password is required." },
                 minLength: {
                   value: 6,
-                  message: 'You password must be 6 length.'
-                }
+                  message: "You password must be 6 length.",
+                },
               })}
             />
-            <label className='label text-error'>
-              {errors.password?.type === 'required' && errors.password.message}
+            <label class="label">
+              <a href="#" class="label-text-alt link link-hover">
+                Forgot password?
+              </a>
+            </label>
+            <label class="label">
+              <Link to="/register" class="label-text-alt link link-hover">
+                Create a new account?
+              </Link>
+            </label>
+            <label className=" text-error">
+              {errors.password?.type === "required" && errors.password.message}
               {errors.password?.type === "minLength" && errors.password.message}
             </label>
           </div>
