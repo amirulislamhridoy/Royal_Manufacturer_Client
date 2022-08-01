@@ -1,5 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
+import Footer from '../../Shared/Footer';
 import Header from '../../Shared/Header/Header';
 import Banner from './Banner';
 import BusinessSummary from './BusinessSummary';
@@ -15,6 +16,7 @@ const Home = () => {
             <Tools />
             <BusinessSummary />
             <Reviews />
+            <Footer />
         </main>
     );
 };

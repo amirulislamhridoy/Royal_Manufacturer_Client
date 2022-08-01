@@ -39,7 +39,7 @@ const Reviews = () => {
       ]
     };
   return (
-    <section className="mt-20">
+    <section className="mt-20 mb-16">
       <h2 className="text-4xl text-center font-bold mb-10">
         User <span className="text-primary">Reviews</span>
       </h2>
