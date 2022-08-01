@@ -3,10 +3,8 @@ import { Link } from "react-router-dom";
 import icon from "../../icons/logo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
-import { useEffect } from "react";
 
 const Header = () => {
-    const [bgColor, setBgColor]= useState(false)
   const btn = (
     <>
       <li>
@@ -18,18 +16,8 @@ const Header = () => {
       </li>
     </>
   );
-  useEffect( () => {
-    window.addEventListener("scroll", changeBackground)
-  }, [])
-  function changeBackground(){
-    if(window.scrollY > '50px'){
-        setBgColor(true)
-      }else{
-        setBgColor(false)
-      }
-  }
   return (
-    <nav className={`navbar sticky top-0 ${bgColor && 'bg-gray-500'}`}>
+    <nav className={`navbar sticky top-0 z-10`}>
       <div className="navbar-start">
         <Link to="/" className="btn btn-ghost">
           <img className="w-10" src={icon} alt="" />

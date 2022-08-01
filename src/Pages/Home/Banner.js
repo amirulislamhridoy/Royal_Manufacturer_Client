@@ -13,31 +13,31 @@ const Banner = () => {
       </div>
 
       <div className='md:w-8/12 mx-auto'>
-        <div class="carousel w-full">
-          <div id="item1" class="carousel-item w-full">
-            <img src={c1} class="w-full" />
+        <div className="carousel w-full">
+          <div id="item1" className="carousel-item w-full">
+            <img src={c1} className="w-full" />
           </div>
-          <div id="item2" class="carousel-item w-full">
-            <img src={c2} class="w-full" />
+          <div id="item2" className="carousel-item w-full">
+            <img src={c2} className="w-full" />
           </div>
-          <div id="item3" class="carousel-item w-full">
-            <img src={c3} class="w-full" />
+          <div id="item3" className="carousel-item w-full">
+            <img src={c3} className="w-full" />
           </div>
-          <div id="item4" class="carousel-item w-full">
-            <img src={c4} class="w-full" />
+          <div id="item4" className="carousel-item w-full">
+            <img src={c4} className="w-full" />
           </div>
         </div>
-        <div class="flex justify-center w-full py-2 gap-2">
-          <a href="#item1" class="btn btn-xs">
+        <div className="flex justify-center w-full py-2 gap-2">
+          <a href="#item1" className="btn btn-xs">
             o
           </a>
-          <a href="#item2" class="btn btn-xs">
+          <a href="#item2" className="btn btn-xs">
             o
           </a>
-          <a href="#item3" class="btn btn-xs">
+          <a href="#item3" className="btn btn-xs">
             o
           </a>
-          <a href="#item4" class="btn btn-xs">
+          <a href="#item4" className="btn btn-xs">
             o
           </a>
         </div>

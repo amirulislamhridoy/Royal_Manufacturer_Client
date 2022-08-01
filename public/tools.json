@@ -1,0 +1,56 @@
+[
+    {
+        "_id": "01",
+        "name": "Drill",
+        "description": "This drill machine is very strong and premium quality. It is easy to use on every man. This is looking nice and light. So you can use easily.",
+        "price": "300",
+        "minium": "1000",
+        "available": "70000",
+        "img": "https://i.ibb.co/80hBdLW/drill.jpg"
+    },
+    {
+        "_id": "02",
+        "name": "Cutter",
+        "description": "This Cutter machine is very strong. It is easy to use on every man. This is looking nice and light. This cutter machine with have three bleat.",
+        "price": "250",
+        "minium": "900",
+        "available": "60000",
+        "img":"https://i.ibb.co/PxfcG2H/cutter.jpg"
+    },
+    {
+        "_id": "03",
+        "name": "Glue Gun",
+        "description": "This is Glue Gun. It is very nice. It is electrical machine. It is long time useable machine.",
+        "price": "200",
+        "minium": "1200",
+        "available": "90000",
+        "img":"https://i.ibb.co/R3TQypV/glue-gun.jpg"
+    },
+    {
+        "_id": "04",
+        "name": "Hammer",
+        "description": "This is Hammer. It is very strong and heavy. It is long time useable. It has two features. For example tarkara press and hold.",
+        "price": "90",
+        "minium": "1250",
+        "available": "85000",
+        "img":"https://i.ibb.co/SRC8TLR/hammer.jpg"
+    },
+    {
+        "_id": "05",
+        "name": "Tester",
+        "description": "It is very unique tester. It has a features that is very strong features. You can many work with this tester and you can it easily.",
+        "price": "90",
+        "minium": "1250",
+        "available": "85000",
+        "img":"https://i.ibb.co/hX10YCc/tester.jpg"
+    },
+    {
+        "_id": "06",
+        "name": "Meal Cutter",
+        "description": "It is useful for cable cutting or others. You can cut many things by this meal cutter. It is very strong.",
+        "price": "70",
+        "minium": "1000",
+        "available": "75000",
+        "img":"https://i.ibb.co/yXc8T3F/meal-cutter.jpg"
+    }
+]
