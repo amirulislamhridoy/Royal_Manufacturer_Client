@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate, NavLink } from "react-router-dom";
 import icon from "../../icons/logo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
@@ -15,14 +15,14 @@ const Header = () => {
   const btn = (
     <>
       <li>
-        <Link to="/">Home</Link>
-        <Link to="/dashboard">Dashboard</Link>
-        <Link to="/blogs">Blogs</Link>
-        <Link to="/myPortFolio">My PortFolio</Link>
+        <NavLink to="/">Home</NavLink>
+        <NavLink to="/dashboard">Dashboard</NavLink>
+        <NavLink to="/blogs">Blogs</NavLink>
+        <NavLink to="/myPortFolio">My PortFolio</NavLink>
         {user ? 
-        <Link onClick={logOut} to="">Login Out</Link>
+        <NavLink onClick={logOut} to="/login">Login Out</NavLink>
         :
-        <Link to="/Login">Login</Link>}
+        <NavLink to="/Login">Login</NavLink>}
       </li>
     </>
   );
