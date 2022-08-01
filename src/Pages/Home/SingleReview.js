@@ -1,8 +1,9 @@
 import React from "react";
+import StarRatingComponent from 'react-star-rating-component';
 
 const SingleReview = (props) => {
     const {img, name, description, designation, ratings} = props.review;
-    console.log(props.review)
+    
   return (
     <div class="card w-96 bg-base-100 shadow-xl mx-auto">
       <div class="card-body">
@@ -18,7 +19,12 @@ const SingleReview = (props) => {
           </div>
         </div>
         <article>{description}</article>
-        <p>{ratings}</p>
+        <p><StarRatingComponent 
+          name="rate1" 
+          starCount={5}
+          value={ratings}
+        /></p>
+        
       </div>
     </div>
   );
