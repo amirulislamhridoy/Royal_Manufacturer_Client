@@ -16,7 +16,7 @@ const BusinessSummary = () => {
       <p className="text-center font-semibold">
         TRY TO UNDERSTAND USERS EXPECTATION
       </p>
-      <div className="sm:flex justify-between mt-12">
+      <div className="sm:flex justify-between mt-12 md:mx-28">
         <div className="flex flex-col justify-center sm:my-0 my-6">
           <FontAwesomeIcon
             className="text-5xl text-success"

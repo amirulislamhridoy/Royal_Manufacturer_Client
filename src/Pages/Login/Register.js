@@ -6,6 +6,7 @@ import auth from '../../firebase_init'
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { updateProfile } from "firebase/auth";
 import Loading from "../../Shared/Loading";
+import { Helmet } from "react-helmet";
 
 const Register = () => {
   const location = useLocation()
@@ -28,6 +29,7 @@ const Register = () => {
   
   return (
     <section className="flex justify-center flex-col items-center min-h-screen">
+      <Helmet><title>Sign Up</title></Helmet>
       <div className="card w-96 bg-base-100 shadow-xl">
         <form className="card-body" onSubmit={handleSubmit(onSubmit)}>
           <h1 className="text-center text-2xl font-bold">Sign Up</h1>

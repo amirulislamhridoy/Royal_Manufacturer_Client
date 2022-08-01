@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet';
 import Header from '../../Shared/Header/Header';
 import Banner from './Banner';
 import BusinessSummary from './BusinessSummary';
+import Reviews from './Reviews';
 import Tools from './Tools';
 
 const Home = () => {
@@ -13,6 +14,7 @@ const Home = () => {
             <Banner />
             <Tools />
             <BusinessSummary />
+            <Reviews />
         </main>
     );
 };

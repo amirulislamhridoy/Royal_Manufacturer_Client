@@ -5,6 +5,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from '../../firebase_init'
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import Loading from "../../Shared/Loading";
+import { Helmet } from "react-helmet";
 
 const Login = () => {
   const location = useLocation()
@@ -26,6 +27,7 @@ const Login = () => {
 
   return (
     <section className="flex justify-center flex-col items-center min-h-screen">
+      <Helmet><title>Login</title></Helmet>
       <div className="card w-96 bg-base-100 shadow-xl">
         <form className="card-body" onSubmit={handleSubmit(onSubmit)}>
           <h1 className='text-center text-2xl font-bold'>Login</h1>
