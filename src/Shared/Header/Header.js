@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import icon from "../../icons/logo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
