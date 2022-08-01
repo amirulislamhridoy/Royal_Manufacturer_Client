@@ -2,15 +2,19 @@ import React from "react";
 import SocialLogin from "./SocialLogin";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import auth from '../../firebase_init'
+import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
+import { updateProfile } from "firebase/auth";
 
 const Register = () => {
-  const {
-    register,
-    formState: { errors },
-    handleSubmit,
-  } = useForm();
+    const [createUserWithEmailAndPassword,user,loading,error,] = useCreateUserWithEmailAndPassword(auth, {sendEmailVerification: true});
+    const {register,formState: { errors },handleSubmit,} = useForm();
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = async (data) => {
+    await createUserWithEmailAndPassword(data.email, data.password)
+    await updateProfile({displayName: data.name})
+  };
+  
   return (
     <section className="flex justify-center flex-col items-center min-h-screen">
       <div className="card w-96 bg-base-100 shadow-xl">
@@ -78,9 +82,9 @@ const Register = () => {
             </label>
           </div>
 
-          <label class="label">
-            <Link to="/login" class="label-text-alt link link-hover">
-              You have an account? Login
+          <label className="label">
+            <Link to="/login" className="label-text-alt link link-hover">
+              You have an account?
             </Link>
           </label>
           <div className="form-control mt-6">

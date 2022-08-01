@@ -2,15 +2,17 @@ import React from "react";
 import SocialLogin from "./SocialLogin";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import auth from '../../firebase_init'
+import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 
 const Login = () => {
-  const {
-    register,
-    formState: { errors },
-    handleSubmit,
-  } = useForm();
+  const [signInWithEmailAndPassword,user,loading,error,] = useSignInWithEmailAndPassword(auth);
+  const {register,formState: { errors },handleSubmit,} = useForm();
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    console.log(data)
+    signInWithEmailAndPassword(data.email, data.password)
+  };
 
   return (
     <section className="flex justify-center flex-col items-center min-h-screen">
@@ -58,13 +60,13 @@ const Login = () => {
                 },
               })}
             />
-            <label class="label">
-              <a href="#" class="label-text-alt link link-hover">
+            <label className="label">
+              <a href="#" className="label-text-alt link link-hover">
                 Forgot password?
               </a>
             </label>
-            <label class="label">
-              <Link to="/register" class="label-text-alt link link-hover">
+            <label className="label">
+              <Link to="/register" className="label-text-alt link link-hover">
                 Create a new account?
               </Link>
             </label>

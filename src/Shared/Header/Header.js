@@ -3,8 +3,15 @@ import { Link } from "react-router-dom";
 import icon from "../../icons/logo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
+import auth from "../../firebase_init";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { signOut } from "firebase/auth";
 
 const Header = () => {
+  const [user, loading, error] = useAuthState(auth);
+  const logOut = () => {
+    signOut(auth);
+  }
   const btn = (
     <>
       <li>
@@ -12,7 +19,10 @@ const Header = () => {
         <Link to="/dashboard">Dashboard</Link>
         <Link to="/blogs">Blogs</Link>
         <Link to="/myPortFolio">My PortFolio</Link>
-        <Link to="/login">Login</Link>
+        {user ? 
+        <Link onClick={logOut} to="">Login Out</Link>
+        :
+        <Link to="/Login">Login</Link>}
       </li>
     </>
   );
