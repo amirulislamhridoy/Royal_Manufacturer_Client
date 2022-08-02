@@ -5,7 +5,7 @@ const SingleReview = (props) => {
     const {img, name, description, designation, ratings} = props.review;
     
   return (
-    <div class="card max-w-96 bg-base-100 hover:shadow-xl mx-auto mb-4">
+    <div class="card bg-base-100 hover:shadow-xl mx-auto mb-4">
       <div class="card-body">
         <div className='flex items-center'>
           <div class="avatar mr-2">

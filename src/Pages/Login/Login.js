@@ -6,6 +6,7 @@ import auth from '../../firebase_init'
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import Loading from "../../Shared/Loading";
 import { Helmet } from "react-helmet";
+import { toast } from 'react-toastify';
 
 const Login = () => {
   const location = useLocation()
@@ -19,6 +20,9 @@ const Login = () => {
   }
   if(user){
     navigate(from)
+  }
+  if(error?.message){
+    toast.error(error.code)
   }
 
   const onSubmit = (data) => {
@@ -72,6 +76,10 @@ const Login = () => {
                 },
               })}
             />
+            <label className=" text-error">
+              {errors.password?.type === "required" && errors.password.message}
+              {errors.password?.type === "minLength" && errors.password.message}
+            </label>
             <label className="label">
               <a href="#" className="label-text-alt link link-hover">
                 Forgot password?
@@ -82,11 +90,8 @@ const Login = () => {
                 Create a new account?
               </Link>
             </label>
-            <label className=" text-error">
-              {errors.password?.type === "required" && errors.password.message}
-              {errors.password?.type === "minLength" && errors.password.message}
-            </label>
           </div>
+          {error?.message && <label className='text-error'>{error.message}</label>}
           <div className="form-control mt-6">
             <button className="btn btn-primary rounded-3xl">Login</button>
           </div>

@@ -7,6 +7,7 @@ import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { updateProfile } from "firebase/auth";
 import Loading from "../../Shared/Loading";
 import { Helmet } from "react-helmet";
+import { toast } from 'react-toastify';
 
 const Register = () => {
   const location = useLocation()
@@ -25,6 +26,9 @@ const Register = () => {
   }
   if(user){
     navigate(from)
+  }
+  if(error?.message){
+    toast.error(error.code)
   }
   
   return (
@@ -100,6 +104,7 @@ const Register = () => {
               You have an account?
             </Link>
           </label>
+          {error?.message && <label className='text-error'>{error.message}</label>}
           <div className="form-control mt-6">
             <button className="btn btn-primary rounded-3xl">Sign Up</button>
           </div>

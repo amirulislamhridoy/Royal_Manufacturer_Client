@@ -10,9 +10,7 @@ import { signOut } from "firebase/auth";
 const Header = () => {
   const [bgColor, setBgColor] = useState(false)
   const [user, loading, error] = useAuthState(auth);
-  const logOut = () => {
-    signOut(auth);
-  }
+  
   const changeBackground = () => {
     if(window.scrollY > 100){
       setBgColor(true)
@@ -21,6 +19,9 @@ const Header = () => {
     }
   }
   window.addEventListener('scroll', changeBackground);
+  const logOut = () => {
+    signOut(auth);
+  }
 
   const btn = (
     <>
