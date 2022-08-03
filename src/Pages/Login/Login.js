@@ -7,22 +7,24 @@ import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import Loading from "../../Shared/Loading";
 import { Helmet } from "react-helmet";
 import { toast } from 'react-toastify';
+import useToken from "../../hoo/userToken";
 
 const Login = () => {
   const location = useLocation()
   const navigate = useNavigate()
   const [signInWithEmailAndPassword,user,loading,error,] = useSignInWithEmailAndPassword(auth);
   const {register,formState: { errors },handleSubmit,} = useForm();
+  const [token] = useToken(user)
 
   let from = location.state?.from?.pathname || "/";
   if(loading){
     return <Loading />
   }
-  if(user){
-    navigate(from)
-  }
   if(error?.message){
     toast.error(error.code)
+  }
+  if(token){
+    navigate(from)
   }
 
   const onSubmit = (data) => {

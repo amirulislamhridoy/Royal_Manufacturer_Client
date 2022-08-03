@@ -5,12 +5,12 @@ const SingleReview = (props) => {
     const {img, name, description, designation, ratings} = props.review;
     
   return (
-    <div class="card bg-base-100 hover:shadow-xl mx-auto mb-4">
-      <div class="card-body">
+    <div className="card bg-base-100 hover:shadow-xl mx-auto mb-4">
+      <div className="card-body">
         <div className='flex items-center'>
-          <div class="avatar mr-2">
-            <div class="w-20 rounded-full">
-              <img src={img} alt='user photo' />
+          <div className="avatar mr-2">
+            <div className="w-20 rounded-full">
+              <img src={img} alt='User img' />
             </div>
           </div>
           <div>
@@ -19,13 +19,13 @@ const SingleReview = (props) => {
           </div>
         </div>
         <article>{description}</article>
-        <p><StarRatingComponent 
-          name="rate1" 
+        <div><StarRatingComponent 
+          name="rate" 
           starCount={5}
-          value={ratings}
+          // value={+ratings}
+          value={parseInt(ratings)}
           className='text-2xl'
-        /></p>
-        
+        /></div>
       </div>
     </div>
   );

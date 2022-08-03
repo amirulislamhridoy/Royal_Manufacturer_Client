@@ -5,21 +5,23 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import Loading from "../../Shared/Loading";
 import { toast } from 'react-toastify';
+import useToken from "../../hoo/userToken";
 
 const SocialLogin = () => {
   const location = useLocation()
   const navigate = useNavigate()
   const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
+  const [token] = useToken(user)
 
   let from = location.state?.from?.pathname || "/";
   if(loading){
     return <Loading />
   }
-  if(user){
-    navigate(from)
-  }
   if(error?.message){
     toast.error(error.code)
+  }
+  if(token){
+    navigate(from)
   }
 
   return (

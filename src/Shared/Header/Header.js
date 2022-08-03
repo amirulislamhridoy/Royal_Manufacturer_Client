@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
-import icon from "../../icons/logo.png";
+import { Link, NavLink, useNavigate, useLocation } from "react-router-dom";
+import icon from "../../icons/logoWithoutBg.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import auth from "../../firebase_init";
@@ -8,7 +8,12 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { signOut } from "firebase/auth";
 
 const Header = () => {
+  const navigate = useNavigate()
+  const location = useLocation()
   const [bgColor, setBgColor] = useState(false)
+
+  let from = location.state?.from?.pathname || "/";
+
   const [user, loading, error] = useAuthState(auth);
   
   const changeBackground = () => {
@@ -21,15 +26,17 @@ const Header = () => {
   window.addEventListener('scroll', changeBackground);
   const logOut = () => {
     signOut(auth);
+    localStorage.removeItem("accessToken")
+    navigate(from)
   }
 
   const btn = (
     <>
       <li>
         <NavLink to="/">Home</NavLink>
-        <NavLink to="/dashboard">Dashboard</NavLink>
         <NavLink to="/blogs">Blogs</NavLink>
         <NavLink to="/myPortFolio">My PortFolio</NavLink>
+        {user && <NavLink to="/dashboard">Dashboard</NavLink>}
         {user ? 
         <NavLink onClick={logOut} to="/login">Login Out</NavLink>
         :
@@ -39,7 +46,7 @@ const Header = () => {
   );
 
   return (
-    <nav className={`navbar sticky top-0 z-10 ${bgColor && 'bg-secondary'}`}>
+    <nav className={`navbar sticky top-0 z-20 ${bgColor && 'bg-secondary'}`}>
       <div className="navbar-start">
         <Link to="/" className="btn btn-ghost">
           <img className="w-10" src={icon} alt="" />

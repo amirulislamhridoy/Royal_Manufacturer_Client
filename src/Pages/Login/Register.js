@@ -8,12 +8,14 @@ import { updateProfile } from "firebase/auth";
 import Loading from "../../Shared/Loading";
 import { Helmet } from "react-helmet";
 import { toast } from 'react-toastify';
+import useToken from "../../hoo/userToken";
 
 const Register = () => {
   const location = useLocation()
   const navigate = useNavigate()
     const [createUserWithEmailAndPassword,user,loading,error,] = useCreateUserWithEmailAndPassword(auth, {sendEmailVerification: true});
     const {register,formState: { errors },handleSubmit,} = useForm();
+    const [token] = useToken(user)
 
   const onSubmit = async (data) => {
     await createUserWithEmailAndPassword(data.email, data.password)
@@ -24,11 +26,11 @@ const Register = () => {
   if(loading){
     return <Loading />
   }
-  if(user){
-    navigate(from)
-  }
   if(error?.message){
     toast.error(error.code)
+  }
+  if(token){
+    navigate(from)
   }
   
   return (
