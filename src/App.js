@@ -10,13 +10,16 @@ import MyProfile from './Pages/Dashboard/MyProfile';
 import MyOrders from './Pages/Dashboard/MyOrders';
 import AddAReview from './Pages/Dashboard/AddAReview';
 import Purchase from './Pages/Home/Purchase';
+import RequireAuth from './Shared/RequireAuth';
 
 function App() {
   return (
     <div className="max-w-7xl mx-auto">
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/purchase/:id' element={<Purchase />} />
+        <Route path='/purchase/:id' element={<RequireAuth>
+          <Purchase />
+        </RequireAuth>} />
         <Route path='/dashboard' element={<Dashboard />}>
           <Route index element={<MyProfile />} />
           <Route path=':myOrders' element={<MyOrders />} />
