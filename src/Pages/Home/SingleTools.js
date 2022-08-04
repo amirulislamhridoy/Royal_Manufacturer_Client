@@ -13,12 +13,12 @@ const SingleTools = ({tool}) => {
         <img src={img} className='rounded-xl' alt='Tools img' />
         <h2 className="card-title">{name}</h2>
 
-        {more && <div>{description.length > 65 ? <>{description.slice(0, 65)} <b onClick={() => setMore(!more)} className='cursor-pointer'>...more</b></> : description}</div>}
-        {more || <div>{description} <b onClick={() => setMore(!more)} className='cursor-pointer'>...less</b></div>}
+        {more && <div className='text-justify'>{description.length > 65 ? <>{description.slice(0, 65)} <b onClick={() => setMore(!more)} className='cursor-pointer'>...more</b></> : description}</div>}
+        {more || <div className='text-justify'>{description} <b onClick={() => setMore(!more)} className='cursor-pointer'>...less</b></div>}
 
         <p>Minium Order: {minium}</p>
         <p>Available Tools: {available}</p>
-        <h3 className="text-2xl font-semibold">Price: {price}</h3>
+        <h3 className="text-2xl font-semibold">Price: ${price}</h3>
         <div className="card-actions justify-end">
           <button onClick={() => navigate(`/purchase/${_id}`)} className="btn btn-primary">Purchase</button>
         </div>

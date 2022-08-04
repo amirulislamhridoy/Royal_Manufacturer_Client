@@ -6,6 +6,7 @@ import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import Loading from "../../Shared/Loading";
 import { toast } from 'react-toastify';
 import useToken from "../../hoo/userToken";
+import { useEffect } from "react";
 
 const SocialLogin = () => {
   const location = useLocation()
@@ -14,15 +15,20 @@ const SocialLogin = () => {
   const [token] = useToken(user)
 
   let from = location.state?.from?.pathname || "/";
+
+  useEffect(() => {
+    if(token){
+      navigate(from)
+    }
+  }, [from, token, navigate])
+
   if(loading){
     return <Loading />
   }
   if(error?.message){
     toast.error(error.code)
   }
-  if(token){
-    navigate(from)
-  }
+  
 
   return (
     <div className="card w-96 bg-base-100 shadow-xl mt-5">

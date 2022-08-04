@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import SocialLogin from "./SocialLogin";
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -17,14 +17,17 @@ const Login = () => {
   const [token] = useToken(user)
 
   let from = location.state?.from?.pathname || "/";
+  useEffect( () => {
+    if(token){
+      navigate(from)
+    }
+  }, [from , navigate, token])
+  
   if(loading){
     return <Loading />
   }
   if(error?.message){
     toast.error(error.code)
-  }
-  if(token){
-    navigate(from)
   }
 
   const onSubmit = (data) => {

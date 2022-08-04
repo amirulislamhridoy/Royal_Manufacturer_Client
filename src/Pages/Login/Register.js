@@ -3,36 +3,41 @@ import SocialLogin from "./SocialLogin";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import auth from '../../firebase_init'
-import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
-import { updateProfile } from "firebase/auth";
+import { useCreateUserWithEmailAndPassword, useUpdateProfile } from "react-firebase-hooks/auth";
 import Loading from "../../Shared/Loading";
 import { Helmet } from "react-helmet";
 import { toast } from 'react-toastify';
 import useToken from "../../hoo/userToken";
+import { useEffect } from "react";
 
 const Register = () => {
   const location = useLocation()
   const navigate = useNavigate()
     const [createUserWithEmailAndPassword,user,loading,error,] = useCreateUserWithEmailAndPassword(auth, {sendEmailVerification: true});
+    const [updateProfile, updating, uError] = useUpdateProfile(auth);
     const {register,formState: { errors },handleSubmit,} = useForm();
     const [token] = useToken(user)
 
   const onSubmit = async (data) => {
     await createUserWithEmailAndPassword(data.email, data.password)
-    await updateProfile({displayName: data.name})
+    await updateProfile({ displayName: data.name });
   };
 
   let from = location.state?.from?.pathname || "/";
+  useEffect( () => {
+    if(token){
+      navigate(from)
+    }
+  }, [from, navigate, token])
+
   if(loading){
     return <Loading />
   }
   if(error?.message){
     toast.error(error.code)
   }
-  if(token){
-    navigate(from)
-  }
   
+
   return (
     <section className="flex justify-center flex-col items-center min-h-screen">
       <Helmet><title>Sign Up</title></Helmet>
@@ -112,7 +117,6 @@ const Register = () => {
           </div>
         </form>
       </div>
-
       <SocialLogin />
     </section>
   );

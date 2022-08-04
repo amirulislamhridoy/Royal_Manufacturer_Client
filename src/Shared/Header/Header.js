@@ -15,7 +15,7 @@ const Header = () => {
   let from = location.state?.from?.pathname || "/";
 
   const [user, loading, error] = useAuthState(auth);
-  
+
   const changeBackground = () => {
     if(window.scrollY > 100){
       setBgColor(true)

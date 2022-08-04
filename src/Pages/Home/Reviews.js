@@ -22,7 +22,7 @@ const Reviews = () => {
       initialSlide: 0,
       responsive: [
         {
-          breakpoint: 600,
+          breakpoint: 1024,
           settings: {
             slidesToShow: 2,
             slidesToScroll: 2,
@@ -30,7 +30,7 @@ const Reviews = () => {
           }
         },
         {
-          breakpoint: 480,
+          breakpoint: 680,
           settings: {
             slidesToShow: 1,
             slidesToScroll: 1
@@ -44,7 +44,7 @@ const Reviews = () => {
         User <span className="text-primary">Reviews</span>
       </h2>
 
-      <div className=''>
+      <div className='w-10/12 md:w-11/12 mx-auto'>
         <Slider {...settings}>
           {reviews.map(review => <SingleReview key={review._id} review={review} />)}
         </Slider>
