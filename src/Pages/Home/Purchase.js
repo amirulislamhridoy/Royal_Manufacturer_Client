@@ -9,6 +9,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { signOut } from "firebase/auth";
 import axios from "axios";
 import { toast } from "react-toastify";
+import EmailVerification from "../../Shared/EmailVerification";
 
 const Purchase = () => {
   const { id } = useParams();
@@ -40,6 +41,9 @@ const Purchase = () => {
   
   if (isLoading) {
     return <Loading />;
+  }
+  if(user?.providerData[0].providerId === "password" && !user?.emailVerified){
+    return <EmailVerification />
   }
   const { img, name, description, minium, available, price, _id } = tools;
 

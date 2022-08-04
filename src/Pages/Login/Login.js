@@ -7,7 +7,7 @@ import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import Loading from "../../Shared/Loading";
 import { Helmet } from "react-helmet";
 import { toast } from 'react-toastify';
-import useToken from "../../hoo/userToken";
+import useToken from "../../hook/userToken";
 
 const Login = () => {
   const location = useLocation()

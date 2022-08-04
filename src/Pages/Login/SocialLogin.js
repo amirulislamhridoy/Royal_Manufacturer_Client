@@ -5,7 +5,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import Loading from "../../Shared/Loading";
 import { toast } from 'react-toastify';
-import useToken from "../../hoo/userToken";
+import useToken from "../../hook/userToken";
 import { useEffect } from "react";
 
 const SocialLogin = () => {

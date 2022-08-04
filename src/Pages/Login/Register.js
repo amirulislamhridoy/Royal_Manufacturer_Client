@@ -7,7 +7,7 @@ import { useCreateUserWithEmailAndPassword, useUpdateProfile } from "react-fireb
 import Loading from "../../Shared/Loading";
 import { Helmet } from "react-helmet";
 import { toast } from 'react-toastify';
-import useToken from "../../hoo/userToken";
+import useToken from "../../hook/userToken";
 import { useEffect } from "react";
 
 const Register = () => {
