@@ -8,7 +8,7 @@ const SingleTools = ({tool}) => {
     const {available, description, img, minium, name, price, _id} = tool
     
   return (
-    <div className="card w-96 bg-base-100 shadow-xl mx-auto">
+    <div className="card bg-base-100 shadow-xl mx-auto">
       <div className="card-body">
         <img src={img} className='rounded-xl' alt='Tools img' />
         <h2 className="card-title">{name}</h2>
