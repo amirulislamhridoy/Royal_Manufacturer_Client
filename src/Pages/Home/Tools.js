@@ -10,6 +10,7 @@ const Tools = () => {
         .then(res => res.json())
         .then(data => setTools(data))
     }, [])
+
     return (
         <section>
             <h2 className='text-4xl text-center mt-8 mb-5 font-bold'>Our <span className='text-primary'>Tools</span></h2>
