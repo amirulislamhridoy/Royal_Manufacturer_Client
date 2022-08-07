@@ -32,6 +32,7 @@ const Login = () => {
 
   const onSubmit = (data) => {
     signInWithEmailAndPassword(data.email, data.password)
+    
   };
 
   return (

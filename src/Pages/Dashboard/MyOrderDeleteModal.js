@@ -14,19 +14,19 @@ const MyOrderDeleteModal = ({ deleteOrder, setDeleteOrder, refetch }) => {
   }
   return (
     <div>
-      <input type="checkbox" id="delete-modal" class="modal-toggle" />
-      <div class="modal modal-bottom sm:modal-middle">
-        <div class="modal-box">
-          <h3 class="font-bold text-lg">
+      <input type="checkbox" id="delete-modal" className="modal-toggle" />
+      <div className="modal modal-bottom sm:modal-middle">
+        <div className="modal-box">
+          <h3 className="font-bold text-lg">
             Are you sure to cancel{" "}
             <span className="text-primary">{deleteOrder?.toolsName}</span>{" "}
             booking ?
           </h3>
-          <div class="modal-action">
-            <label for="delete-modal" class="btn">
+          <div className="modal-action">
+            <label for="delete-modal" className="btn">
               No
             </label>
-            <label onClick={deleteFn} for="delete-modal" class="btn btn-error">
+            <label onClick={deleteFn} for="delete-modal" className="btn btn-error">
               Yes
             </label>
           </div>

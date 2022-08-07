@@ -26,12 +26,12 @@ const EmailVerification = () => {
       </Helmet>
       <Header />
       <section className="flex justify-center items-center min-h-[calc(100vh-200px)]">
-        <div class="card w-96 bg-base-100 shadow-xl">
-          <div class="card-body">
-            <div class="card-actions justify-end">
+        <div className="card w-96 bg-base-100 shadow-xl">
+          <div className="card-body">
+            <div className="card-actions justify-end">
               <button
                 onClick={resendEmailVerification}
-                class="btn btn-primary w-full"
+                className="btn btn-primary w-full"
               >
                 Resend Email Verification
               </button>

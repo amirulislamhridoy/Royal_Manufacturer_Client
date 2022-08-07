@@ -70,8 +70,8 @@ const CheckoutForm = ({ booking }) => {
   }, [price]);
 
   return (
-    <div class="card w-96 bg-base-100 shadow-xl mt-10 ml-10">
-      <div class="card-body">
+    <div className="card w-96 bg-base-100 shadow-xl mt-10 ml-10">
+      <div className="card-body">
         <form onSubmit={handleSubmit}>
           <CardElement
             options={{

@@ -7,7 +7,7 @@ const useToken = (user) => {
   useEffect(() => {
     if (email) {
       fetch(`http://localhost:5000/login/${email}`, {
-        method: "POST",
+        method: "PUT",
         body: JSON.stringify({ email: email }),
         headers: {
           "Content-type": "application/json; charset=UTF-8",
@@ -15,6 +15,7 @@ const useToken = (user) => {
       })
         .then((response) => response.json())
         .then((json) => {
+          console.log(json)
           if (json?.token) {
             localStorage.setItem("accessToken", json.token);
             setToken(json.token);

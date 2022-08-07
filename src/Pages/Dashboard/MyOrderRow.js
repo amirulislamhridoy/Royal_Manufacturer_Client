@@ -15,7 +15,7 @@ const MyOrderRow = ({booking, setDeleteOrder}) => {
       <td>{phone}</td>
       <td>{address}</td>
       <td>
-        {(price && !paid) && <label  onClick={() => setDeleteOrder(booking)} for="delete-modal" class="btn btn-xs btn-error">Cancel</label>}
+        {(price && !paid) && <label  onClick={() => setDeleteOrder(booking)} for="delete-modal" className="btn btn-xs btn-error">Cancel</label>}
         
         {(price && paid) && transactionId}
       </td>
