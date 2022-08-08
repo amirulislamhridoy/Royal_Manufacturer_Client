@@ -1,8 +1,14 @@
 import React from "react";
 import { Link, Outlet } from "react-router-dom";
 import Header from "../../Shared/Header/Header";
+import useAdmin from '../../hook/useAdmin'
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from '../../firebase_init'
 
 const Dashboard = () => {
+  const [user, loading, error] = useAuthState(auth);
+  const [admin] =useAdmin(user)
+
   return (
     <main>
       <Header />
@@ -19,11 +25,15 @@ const Dashboard = () => {
         </div>
         <div className="drawer-side">
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-          <ul className="menu p-4 overflow-y-auto w-52 bg-base-100 text-base-content">
+          <ul className="menu p-4 overflow-y-auto w-52 lg:bg-inherit bg-base-100 text-base-content">
             <li><Link to='/dashboard'>My Profile</Link></li>
-            <li><Link to='/dashboard/myOrders'>My Orders</Link></li>
-            <li><Link to='/dashboard/addReview'>Add Review</Link></li>
-            <li><Link to='/dashboard/makeAdmin'>Make Admin</Link></li>
+            {!admin && <>
+              <li><Link to='/dashboard/myOrders'>My Orders</Link></li>
+              <li><Link to='/dashboard/addReview'>Add Review</Link></li>
+            </>}
+            {admin && <>
+              <li><Link to='/dashboard/makeAdmin'>Make Admin</Link></li>
+            </>}
           </ul>
         </div>
       </div>

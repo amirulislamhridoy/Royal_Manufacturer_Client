@@ -15,7 +15,6 @@ const useToken = (user) => {
       })
         .then((response) => response.json())
         .then((json) => {
-          console.log(json)
           if (json?.token) {
             localStorage.setItem("accessToken", json.token);
             setToken(json.token);

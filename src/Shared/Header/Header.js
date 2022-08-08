@@ -13,7 +13,6 @@ const Header = () => {
   const [bgColor, setBgColor] = useState(false)
 
   let from = location.state?.from?.pathname || "/";
-
   const [user, loading, error] = useAuthState(auth);
 
   const changeBackground = () => {

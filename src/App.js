@@ -13,6 +13,7 @@ import Purchase from './Pages/Home/Purchase';
 import RequireAuth from './Shared/RequireAuth';
 import Payment from './Pages/Dashboard/Payment';
 import MakeAdmin from './Pages/Dashboard/MakeAdmin';
+import RequireAdmin from './Shared/RequireAdmin';
 
 function App() {
   return (
@@ -26,7 +27,9 @@ function App() {
           <Route index element={<MyProfile />} />
           <Route path=':myOrders' element={<MyOrders />} />
           <Route path='addReview' element={<AddReview />} />
-          <Route path='makeAdmin' element={<MakeAdmin />} />
+          <Route path='makeAdmin' element={<RequireAdmin>
+            <MakeAdmin />
+          </RequireAdmin>} />
         </Route>
         <Route path='/payment/:id' element={<Payment />} />
         <Route path='/login' element={<Login />} />

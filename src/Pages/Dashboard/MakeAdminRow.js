@@ -2,7 +2,7 @@ import axios from "axios";
 import React from "react";
 import { toast } from "react-toastify";
 
-const MakeAdminRow = ({ user, i, refetch }) => {
+const MakeAdminRow = ({ user, i, refetch, setRemoveAdmin, setRemoveUser }) => {
   const { email, role } = user;
 
   function adminFn() {
@@ -17,6 +17,7 @@ const MakeAdminRow = ({ user, i, refetch }) => {
         console.log(error);
       });
   }
+  
   return (
     <tr>
       <th>{i + 1}</th>
@@ -32,7 +33,10 @@ const MakeAdminRow = ({ user, i, refetch }) => {
         )}
       </td>
       <td>
-        <button className="btn btn-xs btn-error">Remove User</button>
+        <label onClick={() => setRemoveUser(user)} className='btn btn-xs btn-error' for="remove-user">Remove</label>
+      </td>
+      <td>
+        {role === 'admin' && <label onClick={() => setRemoveAdmin(user)} className='btn btn-xs btn-error' for="remove-admin">Remove From Admin</label>}
       </td>
     </tr>
   );
