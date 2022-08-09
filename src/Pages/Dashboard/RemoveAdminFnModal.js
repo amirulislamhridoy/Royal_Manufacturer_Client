@@ -1,10 +1,11 @@
-import axiosPrivate from '../../Shared/axiosPrivate'
 import React from "react";
 import {useNavigate} from 'react-router-dom'
 import { useAuthState } from "react-firebase-hooks/auth";
 import { toast } from "react-toastify";
 import auth from "../../firebase_init";
 import useAdmin from "../../hook/useAdmin";
+import { signOut } from 'firebase/auth';
+import axiosPrivate from '../../Shared/axiosPrivate'
 
 const RemoveAdminFnModal = ({removeAdmin, setRemoveAdmin, refetch}) => {
     const navigate = useNavigate()
@@ -18,16 +19,20 @@ const RemoveAdminFnModal = ({removeAdmin, setRemoveAdmin, refetch}) => {
             if(response?.data?.modifiedCount){
                 if(!admin){
                     navigate('/dashboard')
-                }else{
-                    refetch()
                 }
+                refetch()
                 toast.success('You are remove a admin.')
                 setRemoveAdmin('')
             }
           })
-          .catch(function (error) {
-            console.log(error);
-          });
+          .catch(err => {
+            if(err.response.status === 403 || err.response.status === 401){
+              toast.error(err.response.statusText)
+              localStorage.removeItem('accessToken')
+              signOut(auth)
+              navigate('/login')
+            }
+          })
     
       }
     return (
@@ -41,10 +46,10 @@ const RemoveAdminFnModal = ({removeAdmin, setRemoveAdmin, refetch}) => {
             from admin.
           </h3>
           <div className="modal-action">
-            <label for="remove-admin" className="btn">
+            <label htmlFor="remove-admin" className="btn">
               No
             </label>
-            <label onClick={removeAdminFn} for="remove-admin" className="btn btn-error">
+            <label onClick={removeAdminFn} htmlFor="remove-admin" className="btn btn-error">
               Yes
             </label>
           </div>

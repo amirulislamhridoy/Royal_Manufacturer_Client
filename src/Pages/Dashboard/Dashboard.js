@@ -4,6 +4,7 @@ import Header from "../../Shared/Header/Header";
 import useAdmin from '../../hook/useAdmin'
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from '../../firebase_init'
+import CustomLink from "./CustomLink";
 
 const Dashboard = () => {
   const [user, loading, error] = useAuthState(auth);
@@ -17,22 +18,24 @@ const Dashboard = () => {
         <div className="drawer-content bg-gray-100">
           <label
             htmlFor="my-drawer-2"
-            className="btn btn-primary drawer-button lg:hidden"
+            className="btn btn-primary btn-sm my-2 drawer-button lg:hidden"
           >
-            Open drawer
+            Open side drawer
           </label>
             <Outlet />
         </div>
         <div className="drawer-side">
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
           <ul className="menu p-4 overflow-y-auto w-52 lg:bg-inherit bg-base-100 text-base-content">
-            <li><Link to='/dashboard'>My Profile</Link></li>
+            <li><CustomLink to='/dashboard'>My Profile</CustomLink></li>
             {!admin && <>
-              <li><Link to='/dashboard/myOrders'>My Orders</Link></li>
-              <li><Link to='/dashboard/addReview'>Add Review</Link></li>
+              <li><CustomLink to='/dashboard/myOrders'>My Orders</CustomLink></li>
+              <li><CustomLink to='/dashboard/addReview'>Add Review</CustomLink></li>
             </>}
             {admin && <>
-              <li><Link to='/dashboard/makeAdmin'>Make Admin</Link></li>
+              <li><CustomLink to='/dashboard/addProduct'>Add Product</CustomLink></li>
+              <li><CustomLink to='/dashboard/makeAdmin'>Make Admin</CustomLink></li>
+              <li><CustomLink to='/dashboard/manageOrders'>Manage Orders</CustomLink></li>
             </>}
           </ul>
         </div>

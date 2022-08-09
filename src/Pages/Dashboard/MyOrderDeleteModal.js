@@ -23,10 +23,10 @@ const MyOrderDeleteModal = ({ deleteOrder, setDeleteOrder, refetch }) => {
             booking ?
           </h3>
           <div className="modal-action">
-            <label for="delete-modal" className="btn">
+            <label htmlFor="delete-modal" className="btn">
               No
             </label>
-            <label onClick={deleteFn} for="delete-modal" className="btn btn-error">
+            <label onClick={deleteFn} htmlFor="delete-modal" className="btn btn-error">
               Yes
             </label>
           </div>

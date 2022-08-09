@@ -10,7 +10,7 @@ import Tools from './Tools';
 const Home = () => {
     return (
         <main className='max-w-7xl mx-auto'>
-            <Helmet><title>Home</title></Helmet>
+            <Helmet><title>Royal Manufacturer</title></Helmet>
             <Header />
             <Banner />
             <Tools />

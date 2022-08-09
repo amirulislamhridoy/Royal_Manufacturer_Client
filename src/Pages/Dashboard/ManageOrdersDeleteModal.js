@@ -3,33 +3,25 @@ import { useNavigate } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { toast } from "react-toastify";
 import auth from "../../firebase_init";
-import useAdmin from "../../hook/useAdmin";
 import { signOut } from "firebase/auth";
-import axios from 'axios'
+import axiosPrivate from '../../Shared/axiosPrivate'
 
-const RemoveUserFnModal = ({removeUser, setRemoveUser, refetch}) => {
+const ManageOrdersDeleteModal = ({deleteOrder, setDeleteOrder, refetch}) => {
   const navigate = useNavigate();
   const [user, loading, error] = useAuthState(auth);
-  const [admin] = useAdmin(user);
 
-  const removeAdminFn = () => {
-    const email = removeUser.email;
-    axios
-      .delete(`http://localhost:5000/removeUser/${email}`)
+  const DeleteOrderFn = () => {
+    axiosPrivate
+      .delete(`http://localhost:5000/removeOrder/${deleteOrder._id}`)
       .then(function (response) {
         if(response?.data?.deletedCount){
             refetch();
-            toast.success("You are remove a user.");
-            setRemoveUser("");
-        }
-        if(user?.email === removeUser.email){
-            toast(`You can only login by this email and password. ${admin && 'It will be a normal user.'}`);
-            localStorage.removeItem('accessToken')
-            signOut(auth)
-            navigate('/login')
+            toast.success("You are remove a order.");
+            setDeleteOrder("");
         }
       })
       .catch(err => {
+        console.log(err)
         if(err.response.status === 403 || err.response.status === 401){
           toast.error(err.response.statusText)
           localStorage.removeItem('accessToken')
@@ -40,21 +32,20 @@ const RemoveUserFnModal = ({removeUser, setRemoveUser, refetch}) => {
   };
   return (
     <div>
-      <input type="checkbox" id="remove-user" className="modal-toggle" />
+      <input type="checkbox" id="delete-order" className="modal-toggle" />
       <div className="modal modal-bottom sm:modal-middle">
         <div className="modal-box">
           <h3 className="font-bold text-lg">
             Are you sure to remove{" "}
-            <span className="text-primary">{removeUser.email}</span> from
-            user.
+            <span className="text-primary">{deleteOrder.toolsName}</span> this <span className="text-primary">{deleteOrder.email}</span> user from booking or order list.
           </h3>
           <div className="modal-action">
-            <label htmlFor="remove-user" className="btn">
+            <label htmlFor="delete-order" className="btn">
               No
             </label>
             <label
-              onClick={removeAdminFn}
-              htmlFor="remove-user"
+              onClick={DeleteOrderFn}
+              htmlFor="delete-order"
               className="btn btn-error"
             >
               Yes
@@ -66,4 +57,4 @@ const RemoveUserFnModal = ({removeUser, setRemoveUser, refetch}) => {
   );
 };
 
-export default RemoveUserFnModal;
+export default ManageOrdersDeleteModal;

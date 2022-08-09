@@ -1,20 +1,29 @@
-import axios from "axios";
+import axiosPrivate from "../../Shared/axiosPrivate";
+import { signOut } from "firebase/auth";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import auth from "../../firebase_init";
 
 const MakeAdminRow = ({ user, i, refetch, setRemoveAdmin, setRemoveUser }) => {
+  const navigate =useNavigate()
   const { email, role } = user;
 
   function adminFn() {
-    axios.patch(`http://localhost:5000/admin/${email}`)
+    axiosPrivate.patch(`http://localhost:5000/admin/${email}`)
       .then(function (response) {
         if(response?.data?.modifiedCount){
             toast.success('You are making a admin.')
             refetch()
         }
       })
-      .catch(function (error) {
-        console.log(error);
+      .catch(function (err) {
+        if(err.response.status === 403 || err.response.status === 401){
+          toast.error(err.response.statusText)
+          localStorage.removeItem('accessToken')
+          signOut(auth)
+          navigate('/login')
+        }
       });
   }
   
@@ -33,10 +42,10 @@ const MakeAdminRow = ({ user, i, refetch, setRemoveAdmin, setRemoveUser }) => {
         )}
       </td>
       <td>
-        <label onClick={() => setRemoveUser(user)} className='btn btn-xs btn-error' for="remove-user">Remove</label>
+        <label onClick={() => setRemoveUser(user)} className='btn btn-xs btn-error' htmlFor="remove-user">Remove</label>
       </td>
       <td>
-        {role === 'admin' && <label onClick={() => setRemoveAdmin(user)} className='btn btn-xs btn-error' for="remove-admin">Remove From Admin</label>}
+        {role === 'admin' && <label onClick={() => setRemoveAdmin(user)} className='btn btn-xs btn-error' htmlFor="remove-admin">Remove From Admin</label>}
       </td>
     </tr>
   );
