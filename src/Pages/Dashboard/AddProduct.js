@@ -1,6 +1,7 @@
 import React from "react";
 import axiosPrivate from '../../Shared/axiosPrivate'
 import { toast } from "react-toastify";
+import { Helmet } from "react-helmet";
 
 const AddProduct = () => {
     const api_key = '893909661bf063b7b6747914cb9d81f0'
@@ -30,11 +31,8 @@ const AddProduct = () => {
               };
             axiosPrivate.post('http://localhost:5000/addProduct', tools)
             .then(res => {
-                console.log(res)
-                if(res.acknowledged){
-                    toast.success('You are added a Tools.')
-                    e.target.reset()
-                }
+                  toast.success('You are added a Tools.')
+                  e.target.reset()
             })
             .catch(err => {
                 if(err.response.status === 401 || err.response.status === 403){
@@ -52,6 +50,8 @@ const AddProduct = () => {
   };
   return (
     <section className="flex justify-center items-center min-h-[calc(100vh-80px)]">
+      <Helmet><title>Dashboard - Add Product</title></Helmet>
+      
       <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
         <form className="card-body" onSubmit={formSubmit}>
           <h1 className="text-3xl text-center font-bold">
