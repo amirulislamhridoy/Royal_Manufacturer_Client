@@ -7,7 +7,7 @@ import useAdmin from "../../hook/useAdmin";
 import { signOut } from "firebase/auth";
 import axios from 'axios'
 
-const RemoveUserFnModal = ({removeUser, setRemoveUser, refetch}) => {
+const RemoveUserFnModal = ({removeUser, setRemoveUser, refetch, setRefetch}) => {
   const navigate = useNavigate();
   const [user, loading, error] = useAuthState(auth);
   const [admin] = useAdmin(user);
@@ -18,7 +18,7 @@ const RemoveUserFnModal = ({removeUser, setRemoveUser, refetch}) => {
       .delete(`http://localhost:5000/removeUser/${email}`)
       .then(function (response) {
         if(response?.data?.deletedCount){
-            refetch();
+            setRefetch(refetch)
             toast.success("You are remove a user.");
             setRemoveUser("");
         }

@@ -1,20 +1,39 @@
-import { useQuery } from "@tanstack/react-query";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import MakeAdminRow from "./MakeAdminRow";
-import Loading from '../../Shared/Loading'
 import RemoveAdminFnModal from "./RemoveAdminFnModal";
 import RemoveUserFnModal from "./RemoveUserFnModal";
+import axios from 'axios'
+import { toast } from "react-toastify";
+import { signOut } from "firebase/auth";
+import auth from "../../firebase_init";
+import { useNavigate } from "react-router-dom";
 
 const MakeAdmin = () => {
-  const [removeAdmin, setRemoveAdmin] =useState({})
+  const navigate = useNavigate()
+  const [users, setUsers] = useState([])
+  const [refetch, setRefetch] = useState(false)
+  const [removeAdmin, setRemoveAdmin] = useState({})
   const [removeUser, setRemoveUser] = useState({})
-  const { isLoading, error, data : users, refetch } = useQuery(['repoData'], () =>
-    fetch('http://localhost:5000/user').then(res =>
-      res.json()
-    )
-  )
-  if(isLoading){<Loading />}
+ 
+  useEffect(() => {
+    axios.get('http://localhost:5000/user', {
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+        'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+      }
+    }).then(res => {
+      setUsers(res.data)
+    }).catch(err => {
+        if(err.response.status === 401 || err.response.status === 403){
+            toast.error(err.response.statusText)
+            localStorage.removeItem('accessToken')
+            signOut(auth)
+            navigate('/login')
+        }
+    })
+  }, [refetch])
+  
   return (
     <section>
       <Helmet>
@@ -34,13 +53,13 @@ const MakeAdmin = () => {
               </tr>
             </thead>
             <tbody>
-              {users?.map((user, i) => <MakeAdminRow user={user} refetch={refetch} setRemoveAdmin={setRemoveAdmin} setRemoveUser={setRemoveUser} key={user._id} i={i} />)}
+              {users?.map((user, i) => <MakeAdminRow user={user} setRefetch={setRefetch} refetch={refetch} setRemoveAdmin={setRemoveAdmin} setRemoveUser={setRemoveUser} key={user._id} i={i} />)}
             </tbody>
           </table>
         </div>
       </div>
-      {removeAdmin && <RemoveAdminFnModal removeAdmin={removeAdmin} setRemoveAdmin={setRemoveAdmin} refetch={refetch}/>}
-      {removeUser && <RemoveUserFnModal removeUser={removeUser} setRemoveUser={setRemoveUser} refetch={refetch}/>}
+      {removeAdmin && <RemoveAdminFnModal removeAdmin={removeAdmin} setRemoveAdmin={setRemoveAdmin} setRefetch={setRefetch} refetch={refetch}/>}
+      {removeUser && <RemoveUserFnModal removeUser={removeUser} setRemoveUser={setRemoveUser} setRefetch={setRefetch} refetch={refetch}/>}
     </section>
   );
 };

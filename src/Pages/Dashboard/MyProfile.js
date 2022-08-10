@@ -15,7 +15,6 @@ const MyProfile = () => {
       res.json()
     )
   );
-  console.log(data);
   if (loading || isLoading) {
     return <Loading />;
   }
@@ -41,14 +40,14 @@ const MyProfile = () => {
               alt=""
             />
           </aside>
-          <aside className="md:w-6/12">
+          <aside className="md:w-7/12">
             <h1 className="text-3xl font-bold">About Me</h1>
-            <h2 className="text-2xl font-medium">{data?.name}</h2>
+            <h2 className="text-2xl font-medium">{user?.displayName}</h2>
             <h3 className="text-xl text-primary">{data?.title}</h3>
             <article className="mb-5">{data?.description}</article>
 
             <div className="md:flex">
-              <div className="w-6/12">
+              <div className="md:w-6/12">
                 <div className="my-1">
                   <b>Birthday : </b>
                   <i className="text-secondary"> {data?.birthday}</i>

@@ -5,20 +5,21 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import auth from "../../firebase_init";
 
-const MakeAdminRow = ({ user, i, refetch, setRemoveAdmin, setRemoveUser }) => {
+const MakeAdminRow = ({ user, i, refetch, setRefetch, setRemoveAdmin, setRemoveUser }) => {
   const navigate =useNavigate()
   const { email, role } = user;
 
   function adminFn() {
     axiosPrivate.patch(`http://localhost:5000/admin/${email}`)
       .then(function (response) {
-        if(response?.data?.modifiedCount){
+        console.log(response)
+        if(response?.data?.acknowledged){
             toast.success('You are making a admin.')
-            refetch()
+            setRefetch(!refetch)
         }
       })
       .catch(function (err) {
-        if(err.response.status === 403 || err.response.status === 401){
+        if(err.response?.status === 403 || err.response?.status === 401){
           toast.error(err.response.statusText)
           localStorage.removeItem('accessToken')
           signOut(auth)

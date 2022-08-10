@@ -7,7 +7,7 @@ import useAdmin from "../../hook/useAdmin";
 import { signOut } from 'firebase/auth';
 import axiosPrivate from '../../Shared/axiosPrivate'
 
-const RemoveAdminFnModal = ({removeAdmin, setRemoveAdmin, refetch}) => {
+const RemoveAdminFnModal = ({removeAdmin, setRemoveAdmin, refetch, setRefetch}) => {
     const navigate = useNavigate()
     const [user, loading, error] = useAuthState(auth);
     const [admin] =useAdmin(user)
@@ -20,8 +20,8 @@ const RemoveAdminFnModal = ({removeAdmin, setRemoveAdmin, refetch}) => {
                 if(!admin){
                     navigate('/dashboard')
                 }
-                refetch()
-                toast.success('You are remove a admin.')
+                setRefetch(!refetch)
+                toast.error('You are remove a admin.')
                 setRemoveAdmin('')
             }
           })
