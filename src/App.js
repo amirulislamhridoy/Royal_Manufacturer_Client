@@ -17,6 +17,7 @@ import RequireAdmin from './Shared/RequireAdmin';
 import ManageOrders from './Pages/Dashboard/ManageOrders';
 import AddProduct from './Pages/Dashboard/AddProduct';
 import MyProfileEdit from './Pages/Dashboard/MyProfileEdit';
+import NotFound from './Pages/Dashboard/NotFound';
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
         <Route path='/payment/:id' element={<Payment />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
+        <Route path='*' element={<NotFound />} />
       </Routes>
       <ToastContainer />
     </div>
