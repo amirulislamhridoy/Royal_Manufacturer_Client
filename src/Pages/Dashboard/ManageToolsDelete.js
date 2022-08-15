@@ -2,14 +2,15 @@ import React from "react";
 import { toast } from "react-toastify";
 
 const ManageToolsDelete = ({toolsDelete, setToolsDelete}) => {
-    const {name, email, toolsName} = toolsDelete
+    const {name} = toolsDelete
 
     function DeleteFn(){
-        fetch(`http://localhost:5000/toolsBooking/${toolsDelete._id}`, {
+        fetch(`http://localhost:5000/toolsDelete/${toolsDelete._id}`, {
             method: 'DELETE',
         }).then(res => res.json())
         .then(data => {
-            toast('You are delete a ' + toolsName)
+          console.log(data)
+            toast('You are delete a ' + name)
             setToolsDelete(null)
         })
     }
@@ -20,7 +21,7 @@ const ManageToolsDelete = ({toolsDelete, setToolsDelete}) => {
         <div className="modal-box">
           <h3 className="font-bold text-lg">
             Are you sure to remove{" "}
-            <span className="text-primary">{toolsName}</span> from Tools booking list. His email is <span className="text-primary">{email}</span>
+            <span className="text-primary">{name}</span> from All Tools.
           </h3>
           <div className="modal-action">
             <label htmlFor="remove-from-booking" className="btn">

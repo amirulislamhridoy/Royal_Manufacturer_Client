@@ -4,6 +4,7 @@ import Footer from '../../Shared/Footer';
 import Header from '../../Shared/Header/Header';
 import Banner from './Banner';
 import BusinessSummary from './BusinessSummary';
+import OurEmployees from './OurEmployees';
 import Reviews from './Reviews';
 import Tools from './Tools';
 
@@ -16,6 +17,7 @@ const Home = () => {
             <Tools />
             <BusinessSummary />
             <Reviews />
+            <OurEmployees />
             <Footer />
         </main>
     );
