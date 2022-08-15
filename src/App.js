@@ -27,7 +27,7 @@ function App() {
   AOS.init();
   
   return (
-    <div className="max-w-7xl mx-auto">
+    <div className="max-w-7xl mx-auto font-poppins">
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/purchase/:id' element={<RequireAuth>

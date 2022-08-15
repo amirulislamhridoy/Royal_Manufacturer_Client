@@ -108,7 +108,7 @@ const Register = () => {
 
           <label className="label">
             <Link to="/login" className="label-text-alt link link-hover">
-              You have an account?
+              Already, you have an account?
             </Link>
           </label>
           {error?.message && <label className='text-error'>{error.message}</label>}
