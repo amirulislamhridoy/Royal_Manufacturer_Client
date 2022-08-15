@@ -17,12 +17,12 @@ const MyOrderRow = ({booking, setDeleteOrder}) => {
       <td>
         {(price && (status === 'unpaid')) && <label  onClick={() => setDeleteOrder(booking)} htmlFor="delete-modal" className="btn btn-xs btn-error">Cancel</label>}
         
-        {(price && (status === 'paid')) && transactionId}
+        {(price && status) && transactionId}
       </td>
       <td>
         {(price && (status === 'unpaid')) && <button onClick={() => navigate(`/dashboard/payment/${_id}`)} className='btn btn-xs btn-primary'>Pay</button>}
-        {(price && (status === 'paid')) && <button className='btn btn-xs btn-ghost'>Paid</button>}
-        {(price && (status === 'shift')) && <button className='btn btn-xs btn-ghost'>Shift</button>}
+        {(price && (status === 'paid')) && <button className='btn btn-xs btn-secondary'>Pending</button>}
+        {(price && (status === 'shift')) && <button className='btn btn-xs btn-ghost border-2 border-secondary'>Shift</button>}
       </td>
     </tr>
   );                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             

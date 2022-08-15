@@ -79,8 +79,7 @@ const AllTools = () => {
       </div>
 
       <div className='flex flex-col items-end my-5'>
-        <select onChange={(e) => setValue(e.target.value)} defaultValue={8} className='border-2 border-secondary rounded mb-1'>
-          <option value='6'>6</option>
+        <select onChange={(e) => setValue(e.target.value)} className='border-2 border-secondary rounded mb-1'>
           <option value='8'>8</option>
           <option value='10'>10</option>
         </select>
