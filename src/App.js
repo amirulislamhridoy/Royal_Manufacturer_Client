@@ -22,7 +22,6 @@ import ManageTools from './Pages/Dashboard/ManageTools';
 import Blogs from './Pages/Blogs.js/Blogs';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import AnimatedCursor from "react-animated-cursor"
 
 function App() {
   AOS.init();
@@ -60,7 +59,6 @@ function App() {
         <Route path='*' element={<NotFound />} />
       </Routes>
       <ToastContainer />
-      <AnimatedCursor innerSize={14} outerSize={40} innerScale={1} outerScale={1.7} outerAlpha={0} outerStyle={{border: '3px  solid red'}}/>
     </div>
   );
 }

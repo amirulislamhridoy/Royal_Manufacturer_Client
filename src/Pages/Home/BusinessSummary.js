@@ -9,7 +9,8 @@ import {
 
 const BusinessSummary = () => {
   return (
-    <section className="mt-20 mb-10 mx-5">
+    <section className="mt-20 mb-10 mx-5" data-aos="fade-up"
+    data-aos-anchor-placement="top-bottom">
       <h1 className="text-4xl font-bold text-center text-success">
         MILLIONS BUSINESS TRUST US
       </h1>

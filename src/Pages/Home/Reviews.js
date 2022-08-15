@@ -40,7 +40,8 @@ const Reviews = () => {
       ]
     };
   return (
-    <section className="mt-20 mb-16">
+    <section className="mt-20 mb-16" data-aos="fade-up"
+    data-aos-anchor-placement="top-bottom">
       <h2 className="text-4xl text-center font-bold mb-10">
         User <span className="text-primary">Reviews</span>
       </h2>
