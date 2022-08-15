@@ -37,7 +37,7 @@ const ManageOrdersDeleteModal = ({deleteOrder, setDeleteOrder, refetch}) => {
         <div className="modal-box">
           <h3 className="font-bold text-lg">
             Are you sure to remove{" "}
-            <span className="text-primary">{deleteOrder.toolsName}</span> this <span className="text-primary">{deleteOrder.email}</span> user from booking or order list.
+            <span className="text-primary">{deleteOrder.toolsName}</span> of <span className="text-primary">{deleteOrder.email}</span> user from booking or order list.
           </h3>
           <div className="modal-action">
             <label htmlFor="delete-order" className="btn">

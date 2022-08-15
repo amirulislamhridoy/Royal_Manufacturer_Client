@@ -56,7 +56,6 @@ const CheckoutForm = ({ booking }) => {
       })
         .then((response) => response.json())
         .then((json) => {
-          console.log(json)
           setSuccess("Congrats, your payment is success.");
           toast('Your payment is successful.')
           setTransactionId(paymentIntent.id);

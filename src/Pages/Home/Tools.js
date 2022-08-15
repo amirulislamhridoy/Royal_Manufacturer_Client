@@ -16,7 +16,7 @@ const Tools = () => {
     }, [])
 
     return (
-        <section>
+        <section id='tools'>
             <h2 className='text-4xl text-center mt-8 mb-5 font-bold'>Our <span className='text-primary'>Tools</span></h2>
             <div className='grid sm:grid-cols-2 lg:grid-cols-3 gap-8'>
                 {tools.slice(0,6).map(tool => <SingleTools tool={tool} key={tool._id} />)}

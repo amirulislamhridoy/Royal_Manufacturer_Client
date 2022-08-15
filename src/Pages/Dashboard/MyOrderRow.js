@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 const MyOrderRow = ({booking, setDeleteOrder}) => {
   const navigate = useNavigate()
-    const {address, email, name, phone, price, quantity, toolsName, _id, paid, transactionId} = booking
+    const {address, email, name, phone, price, quantity, toolsName, _id, status, transactionId} = booking
     
   return (
     <tr>
@@ -15,16 +15,17 @@ const MyOrderRow = ({booking, setDeleteOrder}) => {
       <td>{phone}</td>
       <td>{address}</td>
       <td>
-        {(price && !paid) && <label  onClick={() => setDeleteOrder(booking)} htmlFor="delete-modal" className="btn btn-xs btn-error">Cancel</label>}
+        {(price && (status === 'unpaid')) && <label  onClick={() => setDeleteOrder(booking)} htmlFor="delete-modal" className="btn btn-xs btn-error">Cancel</label>}
         
-        {(price && paid) && transactionId}
+        {(price && (status === 'paid')) && transactionId}
       </td>
       <td>
-        {(price && !paid) && <button onClick={() => navigate(`/dashboard/payment/${_id}`)} className='btn btn-xs btn-primary'>Pay</button>}
-        {(price && paid) && <button className='btn btn-xs btn-ghost'>Paid</button>}
+        {(price && (status === 'unpaid')) && <button onClick={() => navigate(`/dashboard/payment/${_id}`)} className='btn btn-xs btn-primary'>Pay</button>}
+        {(price && (status === 'paid')) && <button className='btn btn-xs btn-ghost'>Paid</button>}
+        {(price && (status === 'shift')) && <button className='btn btn-xs btn-ghost'>Shift</button>}
       </td>
     </tr>
-  );
+  );                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
 };
 
 export default MyOrderRow;

@@ -9,7 +9,7 @@ import {faAngleLeft, faAngleRight} from "@fortawesome/free-solid-svg-icons";
 
 const AllTools = () => {
   const navigate = useNavigate();
-  const [value, setValue] =useState (8)
+  const [value, setValue] = useState(8)
   const [page, setPage] = useState(0)
   const { isLoading, error, data } = useQuery(["tools", value, page], () =>
     fetch(`http://localhost:5000/allTools?page=${page}&value=${value}`).then((res) => res.json())
@@ -79,7 +79,7 @@ const AllTools = () => {
       </div>
 
       <div className='flex flex-col items-end my-5'>
-        <select onChange={(e) => setValue(e.target.value)} defaultValue='8' className='border-2 border-secondary rounded mb-1'>
+        <select onChange={(e) => setValue(e.target.value)} defaultValue={8} className='border-2 border-secondary rounded mb-1'>
           <option value='6'>6</option>
           <option value='8'>8</option>
           <option value='10'>10</option>

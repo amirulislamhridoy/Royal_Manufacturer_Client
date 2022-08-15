@@ -16,7 +16,7 @@ const Banner = () => {
     onRest: () => set(!flip),
   })
   return (
-    <section className='lg:flex justify-between items-center'>
+    <section className='lg:flex justify-between items-center' id='banner'>
       
       <div className='mx-2' data-aos="fade-right"
      data-aos-offset="300"

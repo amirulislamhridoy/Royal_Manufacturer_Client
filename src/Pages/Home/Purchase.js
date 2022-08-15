@@ -68,7 +68,8 @@ const Purchase = () => {
       address,
       toolsName:name,
       price,
-      toolsId: _id
+      toolsId: _id,
+      status: 'unpaid',
     };
     axios
       .post("http://localhost:5000/booking", booking, {
@@ -182,7 +183,7 @@ const Purchase = () => {
               />
             </div>
             <div className="form-control mt-6">
-              <button className="btn btn-primary rounded-3xl">Booking</button>
+              <button className="btn btn-primary rounded-3xl">Purchase</button>
             </div>
           </form>
         </div>
