@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import Header from "../../Shared/Header/Header";
 import useAdmin from '../../hook/useAdmin'
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -35,6 +35,7 @@ const Dashboard = () => {
             {admin && <>
               <li><CustomLink to='/dashboard/addProduct'>Add Product</CustomLink></li>
               <li><CustomLink to='/dashboard/makeAdmin'>Make Admin</CustomLink></li>
+              <li><CustomLink to='/dashboard/manageTools'>Manage Tools</CustomLink></li>
               <li><CustomLink to='/dashboard/manageOrders'>Manage Orders</CustomLink></li>
             </>}
           </ul>

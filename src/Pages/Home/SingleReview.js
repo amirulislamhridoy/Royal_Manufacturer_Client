@@ -2,7 +2,7 @@ import React from "react";
 import StarRatingComponent from 'react-star-rating-component';
 
 const SingleReview = (props) => {
-    const {img, name, description, designation, ratings} = props.review;
+    const {img, name, description, designation, ratings, company} = props.review;
     
   return (
     <div className="card bg-base-100 hover:shadow-xl mx-auto mb-4">
@@ -15,7 +15,7 @@ const SingleReview = (props) => {
           </div>
           <div>
             <h2 className='card-title'>{name}</h2>
-            <p>{designation}</p>
+            <p><span>{designation}</span>, <span>{company}</span></p>
           </div>
         </div>
         <article>{description}</article>

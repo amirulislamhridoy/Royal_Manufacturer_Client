@@ -18,8 +18,15 @@ import ManageOrders from './Pages/Dashboard/ManageOrders';
 import AddProduct from './Pages/Dashboard/AddProduct';
 import MyProfileEdit from './Pages/Dashboard/MyProfileEdit';
 import NotFound from './Pages/Dashboard/NotFound';
+import ManageTools from './Pages/Dashboard/ManageTools';
+import Blogs from './Pages/Blogs.js/Blogs';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import AnimatedCursor from "react-animated-cursor"
 
 function App() {
+  AOS.init();
+  
   return (
     <div className="max-w-7xl mx-auto">
       <Routes>
@@ -32,22 +39,28 @@ function App() {
           <Route path='myProfileEdit' element={<MyProfileEdit />} />
           <Route path=':myOrders' element={<MyOrders />} />
           <Route path='addReview' element={<AddReview />} />
+        <Route path='payment/:id' element={<Payment />} />
           <Route path='makeAdmin' element={<RequireAdmin>
             <MakeAdmin />
           </RequireAdmin>} />
           <Route path='manageOrders' element={<RequireAdmin>
             <ManageOrders />
           </RequireAdmin>} />
+          <Route path='manageTools' element={<RequireAdmin>
+            <ManageTools />
+          </RequireAdmin>} />
           <Route path='addProduct' element={<RequireAdmin>
             <AddProduct />
           </RequireAdmin>} />
         </Route>
-        <Route path='/payment/:id' element={<Payment />} />
+
+        <Route path='/blogs' element={<Blogs />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
       <ToastContainer />
+      <AnimatedCursor innerSize={14} outerSize={40} innerScale={1} outerScale={1.7} outerAlpha={0} outerStyle={{border: '3px  solid red'}}/>
     </div>
   );
 }

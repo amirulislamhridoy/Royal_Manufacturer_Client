@@ -7,7 +7,7 @@ const MyOrderRow = ({booking, setDeleteOrder}) => {
     
   return (
     <tr>
-      <td>{toolsName}</td>
+      <th>{toolsName}</th>
       <td>{price}</td>
       <td>{quantity}</td>
       <td>{name}</td>
@@ -20,7 +20,7 @@ const MyOrderRow = ({booking, setDeleteOrder}) => {
         {(price && paid) && transactionId}
       </td>
       <td>
-        {(price && !paid) && <button onClick={() => navigate(`/payment/${_id}`)} className='btn btn-xs btn-primary'>Pay</button>}
+        {(price && !paid) && <button onClick={() => navigate(`/dashboard/payment/${_id}`)} className='btn btn-xs btn-primary'>Pay</button>}
         {(price && paid) && <button className='btn btn-xs btn-ghost'>Paid</button>}
       </td>
     </tr>

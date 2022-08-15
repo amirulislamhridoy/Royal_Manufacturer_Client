@@ -4,6 +4,8 @@ import { toast } from "react-toastify";
 
 const CheckoutForm = ({ booking }) => {
   const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+  const [transactionId, setTransactionId] = useState("");
   const { price, name, email, toolsName, phone, _id } = booking;
   const [clientSecret, setClientSecret] = useState("");
   const stripe = useStripe();
@@ -28,6 +30,7 @@ const CheckoutForm = ({ booking }) => {
     //   console.log(paymentMethod);
     // }
     setError(error?.message || "");
+    setSuccess("");
 
     const { paymentIntent, error: intentError } =
       await stripe.confirmCardPayment(clientSecret, {
@@ -41,6 +44,7 @@ const CheckoutForm = ({ booking }) => {
       });
     if (intentError) {
       setError(intentError.message);
+      setTransactionId("");
     } else {
       console.log(paymentIntent);
       fetch(`http://localhost:5000/payment/${_id}`, {
@@ -52,7 +56,10 @@ const CheckoutForm = ({ booking }) => {
       })
         .then((response) => response.json())
         .then((json) => {
+          console.log(json)
+          setSuccess("Congrats, your payment is success.");
           toast('Your payment is successful.')
+          setTransactionId(paymentIntent.id);
         });
     }
   };
@@ -70,7 +77,7 @@ const CheckoutForm = ({ booking }) => {
   }, [price]);
 
   return (
-    <div className="card w-96 bg-base-100 shadow-xl mt-10 ml-10">
+    <div className="card w-96 bg-base-100 shadow-xl">
       <div className="card-body">
         <form onSubmit={handleSubmit}>
           <CardElement
@@ -94,6 +101,15 @@ const CheckoutForm = ({ booking }) => {
           </button>
         </form>
         <p className="text-error">{error}</p>
+        {success && (
+        <div className="text-green-500">
+          <p>{success}</p>
+          <p>
+            Your transaction Id:{" "}
+            <span className="text-orange-500">{transactionId}</span>
+          </p>
+        </div>
+      )}
       </div>
     </div>
   );

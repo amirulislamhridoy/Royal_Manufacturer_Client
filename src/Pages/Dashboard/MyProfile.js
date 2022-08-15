@@ -100,8 +100,8 @@ const MyProfile = () => {
             </div>
           </aside>
         </div>
-        <div class="card bg-base-100 shadow-xl mt-10">
-          <div class="card-body">
+        <div className="card bg-base-100 shadow-xl mt-10">
+          <div className="card-body">
             <div className="sm:flex justify-around">
               <div className="flex flex-col items-center">
                 <h2 className="text-3xl font-semibold">{data?.happyClients ? data.happyClients : "0"}</h2>
