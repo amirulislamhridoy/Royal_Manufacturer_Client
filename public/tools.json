@@ -52,5 +52,59 @@
         "minium": "1000",
         "available": "75000",
         "img":"https://i.ibb.co/yXc8T3F/meal-cutter.jpg"
+    },
+    {
+        "_id": "07",
+        "name": "Wall 4 Switch",
+        "description": "It is useful. You can use for many things. It is very strong. It is very easy and simple. It is very beautiful looking.",
+        "price": "50",
+        "minium": "800",
+        "available": "50000",
+        "img":"https://static-01.daraz.com.bd/p/bfd272f0479a354ff7ec033beb240b05.jpg"
+    },
+    {
+        "_id": "08",
+        "name": "Fan Regulator",
+        "description": "It is useful. You can use for many things. It is very strong. It is very easy and simple use. It is very beautiful looking. It's soft.",
+        "price": "30",
+        "minium": "800",
+        "available": "50000",
+        "img":"https://static-01.daraz.com.bd/p/ba5f7e3f8fc498c80c14445df98a61d2.jpg"
+    },
+    {
+        "_id": "09",
+        "name": "Single Electrical Tester",
+        "description": "It is easy to use. It lighting is very fast. It look are good. It is premium and very strong.",
+        "price": "35",
+        "minium": "750",
+        "available": "45000",
+        "img":"https://static-01.daraz.com.bd/p/d2a1bef5ac5943e83096e9aed1085f3a.jpg"
+    },
+    {
+        "_id": "10",
+        "name": "Single Screwdriver",
+        "description": "It is easy to use. It lighting is very fast. It look are good. It is premium and very strong. You can use easily.",
+        "price": "45",
+        "minium": "750",
+        "available": "45000",
+        "img":"https://static-01.daraz.com.bd/p/c09b933db9b177d2fc4b65d33addb6f6.jpg"
+    },
+    {
+        "_id": "11",
+        "name": "Cleaner",
+        "description": "It is easy to use. It working is very fast. It look are good. It is premium and very strong. You can use easily.",
+        "price": "95",
+        "minium": "850",
+        "available": "70000",
+        "img":"https://static-01.daraz.com.bd/p/9622211eccf4830a45c6c82f99cf172d.jpg"
+    },
+    {
+        "_id": "12",
+        "name": "Drill Bits",
+        "description": "It is easy to use. It working is very fast. It look are good. It is premium and very strong. You can use easily. It 1 pcs per packet.",
+        "price": "25",
+        "minium": "1050",
+        "available": "70000",
+        "img":"https://static-01.daraz.com.bd/p/f22e6b5495da07b5c36678a0bc46507c.jpg"
     }
 ]

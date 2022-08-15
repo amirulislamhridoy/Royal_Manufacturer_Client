@@ -22,6 +22,7 @@ import ManageTools from './Pages/Dashboard/ManageTools';
 import Blogs from './Pages/Blogs.js/Blogs';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import AllTools from './Pages/AllTools/AllTools';
 
 function App() {
   AOS.init();
@@ -52,7 +53,8 @@ function App() {
             <AddProduct />
           </RequireAdmin>} />
         </Route>
-
+          
+        <Route path='/allTools' element={<AllTools />} />
         <Route path='/blogs' element={<Blogs />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
