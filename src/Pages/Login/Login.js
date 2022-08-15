@@ -1,6 +1,5 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import SocialLogin from "./SocialLogin";
-import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from '../../firebase_init'
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
@@ -8,13 +7,17 @@ import Loading from "../../Shared/Loading";
 import { Helmet } from "react-helmet";
 import { toast } from 'react-toastify';
 import useToken from "../../hook/userToken";
+import { useSendPasswordResetEmail } from 'react-firebase-hooks/auth';
 
 const Login = () => {
   const location = useLocation()
   const navigate = useNavigate()
+  const [email, setEmail] = useState('')
   const [signInWithEmailAndPassword,user,loading,error,] = useSignInWithEmailAndPassword(auth);
-  const {register,formState: { errors },handleSubmit,} = useForm();
   const [token] = useToken(user)
+  const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(
+    auth
+  );
 
   let from = location.state?.from?.pathname || "/";
   useEffect( () => {
@@ -29,17 +32,25 @@ const Login = () => {
   if(error?.message){
     toast.error(error.code)
   }
-
-  const onSubmit = (data) => {
-    signInWithEmailAndPassword(data.email, data.password)
-    
-  };
-
+  function formSubmit(e){
+    e.preventDefault()
+    const password = e.target.password.value
+    signInWithEmailAndPassword(email, password)
+  }
+  async function forgotPasswordFn(){
+    const validation = /\S+@\S+\.\S+/.test(email)
+    if(!validation){
+      return toast.error('Please type valid email address.')
+    }
+    await sendPasswordResetEmail(email)
+    toast.success('Send password reset email.')
+  }
+  
   return (
     <section className="flex justify-center flex-col items-center min-h-screen">
       <Helmet><title>Login</title></Helmet>
       <div className="card w-96 bg-base-100 shadow-xl">
-        <form className="card-body" onSubmit={handleSubmit(onSubmit)}>
+        <form className="card-body" onSubmit={formSubmit}>
           <h1 className='text-center text-2xl font-bold'>Login</h1>
           <div className="form-control">
             <label className="label" htmlFor="email">
@@ -47,23 +58,11 @@ const Login = () => {
             </label>
             <input
               placeholder="jon@gmail.com"
+              type='email'
               id="email"
               className="input input-bordered"
-              {...register("email", {
-                required: {
-                  value: true,
-                  message: "Email is required",
-                },
-                pattern: {
-                  value: /^\S+@\S+\.\S+$/,
-                  message: "Email is invalid",
-                },
-              })}
+              onBlur={e=> setEmail(e.target.value)}
             />
-            <label className=" text-error">
-              {errors.email?.type === "required" && errors.email.message}
-              {errors.email?.type === "pattern" && errors.email.message}
-            </label>
           </div>
           <div className="form-control">
             <label className="label" htmlFor="password">
@@ -74,20 +73,10 @@ const Login = () => {
               placeholder="Password"
               id="password"
               className="input input-bordered"
-              {...register("password", {
-                required: { value: true, message: "Password is required." },
-                minLength: {
-                  value: 6,
-                  message: "You password must be 6 length.",
-                },
-              })}
+              name='password'
             />
-            <label className=" text-error">
-              {errors.password?.type === "required" && errors.password.message}
-              {errors.password?.type === "minLength" && errors.password.message}
-            </label>
             <label className="label">
-              <a href="#" className="label-text-alt link link-hover">
+              <a href="#" onClick={forgotPasswordFn} className="label-text-alt link link-hover" alt=''>
                 Forgot password?
               </a>
             </label>
