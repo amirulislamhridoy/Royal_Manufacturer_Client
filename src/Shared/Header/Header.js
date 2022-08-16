@@ -34,7 +34,7 @@ const Header = () => {
       <li>
         <NavLink to="/">Home</NavLink>
         <NavLink to="/blogs">Blogs</NavLink>
-        <NavLink to="/myPortFolio">My PortFolio</NavLink>
+        <NavLink to="/myPortfolio">My Portfolio</NavLink>
         {user && <NavLink to="/dashboard">Dashboard</NavLink>}
         {user ? 
         <NavLink onClick={logOut} to="/login">Login Out</NavLink>

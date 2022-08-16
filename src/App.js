@@ -23,6 +23,7 @@ import Blogs from './Pages/Blogs.js/Blogs';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import AllTools from './Pages/AllTools/AllTools';
+import MyPortfolio from './Pages/MyPortfolio/MyPortfolio';
 
 function App() {
   AOS.init();
@@ -56,6 +57,7 @@ function App() {
           
         <Route path='/allTools' element={<AllTools />} />
         <Route path='/blogs' element={<Blogs />} />
+        <Route path='/myPortfolio' element={<MyPortfolio />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
         <Route path='*' element={<NotFound />} />
