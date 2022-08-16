@@ -19,10 +19,10 @@ const ContentUs = () => {
 
   return (
     <section className="mt-20">
-      <div class="card bg-base-100 shadow-xl mx-5 lg:mx-20 ">
-        <div class="card-body">
-          <div class="avatar mx-auto mt-[-20px]">
-            <div class="w-20 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+      <div className="card bg-base-100 shadow-xl mx-5 lg:mx-20 ">
+        <div className="card-body">
+          <div className="avatar mx-auto mt-[-20px]">
+            <div className="w-20 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
               <img src={logo} alt="" />
             </div>
           </div>
