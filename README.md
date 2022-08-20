@@ -3,7 +3,10 @@
 ### [Royal Manufacturer Client Side Code](https://github.com/amirulislamhridoy/Royal_Manufacturer_Client.git)
 ### [Royal Manufacturer Client Server Code](https://github.com/amirulislamhridoy/Royal-Manufacturer-Server.git)
 
-* Royal Manufacturer has My Profile page and you can edit your about you.
+* 
+    * admin : abc@gmail.com password: 32202910
+
+* aa Royal Manufacturer has My Profile page and you can edit your about you.
 * This website has authentication and authorization(JWT) system.
 * It have admin routes. For example Make Admin, Add Product Manage Tools and Manage Orders.
 * Normal users can see My Orders, Add Review. Everyone can see My Profile page.
