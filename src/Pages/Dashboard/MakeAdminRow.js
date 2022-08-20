@@ -10,7 +10,7 @@ const MakeAdminRow = ({ user, i, refetch, setRefetch, setRemoveAdmin, setRemoveU
   const { email, role } = user;
 
   function adminFn() {
-    axiosPrivate.patch(`http://localhost:5000/admin/${email}`)
+    axiosPrivate.patch(`https://royal-manufacturer.herokuapp.com/admin/${email}`)
       .then(function (response) {
         console.log(response)
         if(response?.data?.acknowledged){

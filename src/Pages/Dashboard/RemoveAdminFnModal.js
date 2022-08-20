@@ -14,7 +14,7 @@ const RemoveAdminFnModal = ({removeAdmin, setRemoveAdmin, refetch, setRefetch}) 
     
     const removeAdminFn = () =>{
         const email = removeAdmin.email
-        axiosPrivate.patch(`http://localhost:5000/makeAdminFn?email=${email}`)
+        axiosPrivate.patch(`https://royal-manufacturer.herokuapp.com/makeAdminFn?email=${email}`)
           .then(function (response) {
             if(response?.data?.modifiedCount){
                 if(!admin){

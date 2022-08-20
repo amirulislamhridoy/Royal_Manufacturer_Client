@@ -17,7 +17,7 @@ const Payment = () => {
     error,
     data: booking,
   } = useQuery(["repoData"], () =>
-    fetch(`http://localhost:5000/booking/${id}`).then((res) => res.json())
+    fetch(`https://royal-manufacturer.herokuapp.com/booking/${id}`).then((res) => res.json())
   );
   if (isLoading) {
     return <Loading />;

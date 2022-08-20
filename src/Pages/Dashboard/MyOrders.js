@@ -17,7 +17,7 @@ const MyOrders = () => {
   const email = user?.email;
 
   const { isLoading,  data : bookings, refetch } = useQuery(['repoData', user], () =>
-    fetch(`http://localhost:5000/booking?email=${email}`, {
+    fetch(`https://royal-manufacturer.herokuapp.com/booking?email=${email}`, {
       method: "GET",
       headers: {
         'Content-type': 'application/json; charset=UTF-8',

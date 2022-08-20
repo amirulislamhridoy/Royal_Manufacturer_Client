@@ -50,12 +50,17 @@ const MyPortFolio = () => {
           <tr>
             <td className='font-medium'>JavaScript</td>
             <td></td>
-            <td><progress class="progress progress-dark w-56" value="100" max="100"></progress></td>
+            <td><progress class="progress progress-dark w-56" value="80" max="80"></progress></td>
           </tr>
           <tr>
             <td className='font-medium'>Rest API</td>
             <td></td>
             <td><progress class="progress progress-dark w-56" value="100" max="100"></progress></td>
+          </tr>
+          <tr>
+            <td className='font-medium'>React</td>
+            <td></td>
+            <td><progress class="progress progress-dark w-56" value="80" max="80"></progress></td>
           </tr>
         </table>
         <table className='md:ml-20'>

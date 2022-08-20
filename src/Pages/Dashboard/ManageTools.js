@@ -7,7 +7,7 @@ const ManageTools = () => {
   const [tools, setTools] = useState([]);
   const [toolsDelete, setToolsDelete] = useState(null);
   useEffect(() => {
-    axiosPrivate("http://localhost:5000/manageTools").then((res) =>
+    axiosPrivate("https://royal-manufacturer.herokuapp.com/manageTools").then((res) =>
       setTools(res.data)
     );
   }, [toolsDelete]);

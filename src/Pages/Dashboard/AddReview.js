@@ -18,7 +18,7 @@ const AddAReview = () => {
     data.email = email
     data.name = user.displayName
     
-    axiosPrivate.post(`http://localhost:5000/addReview?email=${email}`, data)
+    axiosPrivate.post(`https://royal-manufacturer.herokuapp.com/addReview?email=${email}`, data)
     .then(function (response) {
       console.log(response);
       toast.success('Your review is success.')

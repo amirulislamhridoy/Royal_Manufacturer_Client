@@ -12,7 +12,7 @@ const AllTools = () => {
   const [value, setValue] = useState(8)
   const [page, setPage] = useState(0)
   const { isLoading, error, data } = useQuery(["tools", value, page], () =>
-    fetch(`http://localhost:5000/allTools?page=${page}&value=${value}`).then((res) => res.json())
+    fetch(`https://royal-manufacturer.herokuapp.com/allTools?page=${page}&value=${value}`).then((res) => res.json())
   );
 
   if (isLoading) {

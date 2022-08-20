@@ -22,7 +22,7 @@ const Purchase = () => {
     error,
     data: tools,
   } = useQuery(["tools"], () =>
-    fetch(`http://localhost:5000/tools/${id}`, {
+    fetch(`https://royal-manufacturer.herokuapp.com/tools/${id}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -72,7 +72,7 @@ const Purchase = () => {
       status: 'unpaid',
     };
     axios
-      .post("http://localhost:5000/booking", booking, {
+      .post("https://royal-manufacturer.herokuapp.com/booking", booking, {
         headers: {
           "Content-type": "application/json; charset=UTF-8",
           authorization: `Bearer ${localStorage.getItem("accessToken")}`,

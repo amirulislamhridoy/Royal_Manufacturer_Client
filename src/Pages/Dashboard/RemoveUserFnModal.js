@@ -15,7 +15,7 @@ const RemoveUserFnModal = ({removeUser, setRemoveUser, refetch, setRefetch}) => 
   const removeAdminFn = () => {
     const email = removeUser.email;
     axios
-      .delete(`http://localhost:5000/removeUser/${email}`)
+      .delete(`https://royal-manufacturer.herokuapp.com/removeUser/${email}`)
       .then(function (response) {
         if(response?.data?.deletedCount){
             setRefetch(refetch)

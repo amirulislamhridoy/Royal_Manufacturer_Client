@@ -17,7 +17,7 @@ const MakeAdmin = () => {
   const [removeUser, setRemoveUser] = useState({})
  
   useEffect(() => {
-    axios.get('http://localhost:5000/user', {
+    axios.get('https://royal-manufacturer.herokuapp.com/user', {
       headers: {
         'Content-type': 'application/json; charset=UTF-8',
         'authorization': `Bearer ${localStorage.getItem('accessToken')}`

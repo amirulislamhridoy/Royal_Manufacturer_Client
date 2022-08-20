@@ -5,7 +5,7 @@ const ManageToolsDelete = ({toolsDelete, setToolsDelete}) => {
     const {name} = toolsDelete
 
     function DeleteFn(){
-        fetch(`http://localhost:5000/toolsDelete/${toolsDelete._id}`, {
+        fetch(`https://royal-manufacturer.herokuapp.com/toolsDelete/${toolsDelete._id}`, {
             method: 'DELETE',
         }).then(res => res.json())
         .then(data => {

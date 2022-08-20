@@ -11,7 +11,7 @@ const MyProfile = () => {
   const navigate = useNavigate();
   const [user, loading] = useAuthState(auth);
   const { isLoading, error, data } = useQuery(["repoData"], () =>
-    fetch(`http://localhost:5000/profile/${user?.email}`).then((res) =>
+    fetch(`https://royal-manufacturer.herokuapp.com/profile/${user?.email}`).then((res) =>
       res.json()
     )
   );

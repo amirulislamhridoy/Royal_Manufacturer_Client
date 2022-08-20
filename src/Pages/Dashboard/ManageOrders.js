@@ -52,13 +52,13 @@ const ManageOrders = () => {
     data: orders,
     refetch,
   } = useQuery(["orders", all, unpaid, paid, shift], () =>
-    fetch(`http://localhost:5000/orders?all=${all}&unpaid=${unpaid}&paid=${paid}&shift=${shift}`).then((res) => res.json())
+    fetch(`https://royal-manufacturer.herokuapp.com/orders?all=${all}&unpaid=${unpaid}&paid=${paid}&shift=${shift}`).then((res) => res.json())
   );
   if (isLoading) {
     return <Loading />;
   }
   const pendingFn = (order) => {
-    axiosPrivate.patch(`http://localhost:5000/pendingToShift/${order._id}`)
+    axiosPrivate.patch(`https://royal-manufacturer.herokuapp.com/pendingToShift/${order._id}`)
   .then(function (response) {
     toast.success(`${order.toolsName} is successfully shift`)
     refetch()

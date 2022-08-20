@@ -12,7 +12,7 @@ const ManageOrdersDeleteModal = ({deleteOrder, setDeleteOrder, refetch}) => {
 
   const DeleteOrderFn = () => {
     axiosPrivate
-      .delete(`http://localhost:5000/removeOrder/${deleteOrder._id}`)
+      .delete(`https://royal-manufacturer.herokuapp.com/removeOrder/${deleteOrder._id}`)
       .then(function (response) {
         if(response?.data?.deletedCount){
             refetch();

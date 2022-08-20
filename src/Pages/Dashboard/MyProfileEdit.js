@@ -27,7 +27,7 @@ const MyProfileEdit = () => {
         data.img = imgUrl;
         data.email = user.email;
         await updateProfile({ displayName: data.name });
-        await fetch(`http://localhost:5000/profileEdit/${user.email}`, {
+        await fetch(`https://royal-manufacturer.herokuapp.com/profileEdit/${user.email}`, {
           method: "PATCH",
           body: JSON.stringify(data),
           headers: {

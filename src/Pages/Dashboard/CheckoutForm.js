@@ -47,7 +47,7 @@ const CheckoutForm = ({ booking }) => {
       setTransactionId("");
     } else {
       console.log(paymentIntent);
-      fetch(`http://localhost:5000/payment/${_id}`, {
+      fetch(`https://royal-manufacturer.herokuapp.com/payment/${_id}`, {
         method: "PATCH",
         body: JSON.stringify({transactionId: paymentIntent.id}),
         headers: {
@@ -64,7 +64,7 @@ const CheckoutForm = ({ booking }) => {
   };
 
   useEffect(() => {
-    fetch("http://localhost:5000/create-payment-intent", {
+    fetch("https://royal-manufacturer.herokuapp.com/create-payment-intent", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ price: price }),

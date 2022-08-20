@@ -29,7 +29,7 @@ const AddProduct = () => {
                 img: imgUrl,
                 name, description, minium, available, price,
               };
-            axiosPrivate.post('http://localhost:5000/addProduct', tools)
+            axiosPrivate.post('https://royal-manufacturer.herokuapp.com/addProduct', tools)
             .then(res => {
                   toast.success('You are added a Tools.')
                   e.target.reset()
