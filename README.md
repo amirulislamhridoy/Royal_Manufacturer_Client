@@ -1,5 +1,5 @@
-# Royal Manufacturer
-## [http://localhost:3000](http://localhost:3000)
+# Royal Manufacturer(https://royal-manufacturer.netlify.app/)
+## [https://royal-manufacturer.netlify.app/](https://royal-manufacturer.netlify.app/)
 ### [Royal Manufacturer Client Side Code](https://github.com/amirulislamhridoy/Royal_Manufacturer_Client.git)
 ### [Royal Manufacturer Client Server Code](https://github.com/amirulislamhridoy/Royal-Manufacturer-Server.git)
 
@@ -8,7 +8,7 @@
 * It have admin routes. For example Make Admin, Add Product Manage Tools and Manage Orders.
 * Normal users can see My Orders, Add Review. Everyone can see My Profile page.
 * You are login by email and password. But if don't verify your verification email. You can not purchase any tools.
-* It has cursor animation, normal word animation and section animation.
+* This website use  AOS, react-spring, react-typing animation and react-slick etc.
 
 <!-- # Getting Started with Create React App
 
