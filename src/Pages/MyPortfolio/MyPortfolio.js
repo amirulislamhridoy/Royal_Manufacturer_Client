@@ -116,7 +116,7 @@ const MyPortFolio = () => {
           <b className="text-xl">Educational Background :</b>
         </p>
         <p className="font-semibold mb-2">
-          Achievement: Black Belt form Programming Hero Web Development Course
+          <u>Achievement</u> : Black Belt form Programming Hero Web Development Course
           <br />
           Complete Web Development Course With Jhankar Mahbub
         </p>
