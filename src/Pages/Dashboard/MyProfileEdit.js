@@ -4,13 +4,19 @@ import { Helmet } from "react-helmet";
 import { useForm } from "react-hook-form";
 import { useAuthState, useUpdateProfile } from "react-firebase-hooks/auth";
 import { toast } from "react-toastify";
+import uploadImg from "../../icons/cloud-upload-outline 1.png";
 
 const MyProfileEdit = () => {
   const [user, loading, error] = useAuthState(auth);
   const img_key = "893909661bf063b7b6747914cb9d81f0";
   const [updateProfile, updating] = useUpdateProfile(auth);
 
-  const { register, formState: { errors }, handleSubmit, reset } = useForm();
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+    reset,
+  } = useForm();
 
   const onSubmit = (data) => {
     const img = data.img[0];
@@ -27,13 +33,16 @@ const MyProfileEdit = () => {
         data.img = imgUrl;
         data.email = user.email;
         await updateProfile({ displayName: data.name });
-        await fetch(`https://royal-manufacturer.herokuapp.com/profileEdit/${user.email}`, {
-          method: "PATCH",
-          body: JSON.stringify(data),
-          headers: {
-            "Content-type": "application/json; charset=UTF-8",
-          },
-        })
+        await fetch(
+          `https://royal-manufacturer.herokuapp.com/profileEdit/${user.email}`,
+          {
+            method: "PATCH",
+            body: JSON.stringify(data),
+            headers: {
+              "Content-type": "application/json; charset=UTF-8",
+            },
+          }
+        )
           .then((response) => response.json())
           .then((json) => {
             toast.success("Your Profile is updated.");
@@ -43,6 +52,10 @@ const MyProfileEdit = () => {
       .catch((error) => {
         console.error("Error:", error);
       });
+  };
+  const uploadFn = () => {
+    const uploadedImg = document.getElementById("image");
+    uploadedImg.click();
   };
 
   return (
@@ -72,25 +85,31 @@ const MyProfileEdit = () => {
             />
           </div>
           <div className="form-control mt-2 sm:w-8/12 lg:w-11/12">
-            <label className="label" htmlFor="img">
+            <label className="label" htmlFor="image">
               <span className="label-text font-medium">
                 Profile Picture <span className="text-red-500">*</span>
               </span>
             </label>
-            <input
-              type="file"
-              id="img"
-              className="text-sm text-grey-500
-                file:mr-5 file:py-3 file:px-10
-                file:rounded-full file:border-0
-                file:text-md file:font-semibold  file:text-white
-                file:bg-gradient-to-r file:from-blue-600 file:to-amber-600
-                hover:file:cursor-pointer hover:file:opacity-80
-              "
-              required
-              {...register("img")}
-            />
+
+            <div className="relative p-3">
+              <input
+                type="file"
+                name="image"
+                id="image"
+                required
+                {...register("img")}
+                className="scale-125 translate-x-1/4 cursor-pointer"
+              />
+              <div
+                onClick={uploadFn}
+                className="flex items-center absolute top-0 left-2 bg-base-100 border-2 rounded-xl cursor-pointer"
+              >
+                <img className="w-12" src={uploadImg} alt="" />
+                <span className="pr-4 font-medium">Upload image</span>
+              </div>
+            </div>
           </div>
+
           <div className="form-control sm:w-8/12 lg:w-11/12">
             <label className="label" htmlFor="title">
               <span className="label-text font-medium">
@@ -121,11 +140,13 @@ const MyProfileEdit = () => {
               {...register("description", {
                 minLength: {
                   value: 50,
-                  message: 'Description length will be minium 50 words.' 
-                }
+                  message: "Description length will be minium 50 words.",
+                },
               })}
             />
-            {errors.description?.type === 'minLength' && <p className='text-red-500'>{errors.description.message}</p>}
+            {errors.description?.type === "minLength" && (
+              <p className="text-red-500">{errors.description.message}</p>
+            )}
           </div>
 
           <div className="lg:flex">
@@ -271,7 +292,7 @@ const MyProfileEdit = () => {
                 />
               </div>
             </div>
-            <div className='lg:w-6/12'>
+            <div className="lg:w-6/12">
               <div className="form-control sm:w-8/12 lg:w-full lg:max-w-sm">
                 <label className="label" htmlFor="projectCompleted">
                   <span className="label-text font-medium">

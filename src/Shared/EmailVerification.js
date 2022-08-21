@@ -16,7 +16,7 @@ const EmailVerification = () => {
   const resendEmailVerification = async () => {
     const email = user?.email;
     await sendEmailVerification(email);
-    toast.success("Resend Email Verification is successful.");
+    toast.success("Resend Email Verification is successful and you should reload.");
   };
 
   return (
@@ -25,8 +25,15 @@ const EmailVerification = () => {
         <title>Purchase - Verify Email</title>
       </Helmet>
       <Header />
-      <section className="flex justify-center items-center min-h-[calc(100vh-200px)]">
+      <section className="flex flex-col justify-center items-center min-h-[calc(100vh-200px)]">
         <div className="card w-96 bg-base-100 shadow-xl">
+          <div className="card-body">
+            <div className="card-actions justify-center">
+              <h2 className='text-xl font-semibold'>You should verify your email.</h2>
+            </div>
+          </div>
+        </div>
+        <div className="card w-96 bg-base-100 shadow-xl mt-3">
           <div className="card-body">
             <div className="card-actions justify-end">
               <button
